@@ -1,0 +1,13 @@
+#home {
+    min-width: 100%;
+    display: grid;
+}
+
+content {
+    width: 85%;
+    margin: 0 auto;
+    margin-top: 50px;
+    border-radius: 5px;
+    height: 500px;
+    background-color: white;
+}

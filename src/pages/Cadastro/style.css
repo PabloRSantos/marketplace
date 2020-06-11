@@ -1,0 +1,59 @@
+#cadastro {
+    width: 100%;
+    color: rgb(86, 87, 88);
+}
+
+#form {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 50px;
+    border-radius: 8px;
+    background-color: white;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+input {
+    border: none;
+    border-radius: 5px;
+    background-color: #F6F5F4;
+    
+    width: 400px;
+    color:  rgb(86, 87, 88);
+    font-size: 17px;
+    padding: 10px;
+}
+
+label {
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+br {
+    line-height: 30px;
+}
+
+.campo {
+    margin: 30px 0;
+}
+
+button {
+    background-color: #307351;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    padding: 15px 0;
+    font-weight: 600;
+    font-size: 18px;
+    justify-self: center;
+    margin-bottom: 30px;
+    cursor: pointer;
+    transition: .4s;
+}
+
+button:hover {
+    filter: brightness(.92);
+}

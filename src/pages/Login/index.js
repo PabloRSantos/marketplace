@@ -23,14 +23,15 @@ const Login = () => {
             alert(response.data.error)
          }   
          else {
-            history.push({
-                pathname: "/",
-                token: `Bearer ${response.data.token}`
-            })
+             localStorage.setItem("LojaVirtual", `Bearer ${response.data.token}`)
+             
+             localStorage.setItem("LojaVirtualId", response.data.id)
+            history.push("/")
          }
-
         })
-    }
+         
+
+        }
 
     return (
         <main id="login">

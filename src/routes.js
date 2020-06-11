@@ -5,6 +5,8 @@ import Categoria from './pages/Categoria'
 import Cadastro from "./pages/Cadastro"
 import Login from "./pages/Login"
 import Perfil from "./pages/PerfilUser"
+import UserDados from "./pages/RotasUser/Dados"
+import UserProdutos from "./pages/RotasUser/Produtos"
 
 
 const Routes = () => {
@@ -14,7 +16,9 @@ const Routes = () => {
          <Route component={Categoria} path="/categoria/:nome" />
          <Route component={Cadastro} path="/cadastro"/>
          <Route component={Login} path="/login"/>
-         <Route component={Perfil} path="/perfil"/>
+         <Route component={Perfil} path="/user/perfil"/>
+         <Route component={UserDados} path="/user/dados"/>
+         <Route component={UserProdutos} path="/user/produtos"/>
          </BrowserRouter>   
     )
 }

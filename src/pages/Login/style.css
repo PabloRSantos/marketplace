@@ -45,7 +45,7 @@ br {
     max-width: 100%;
 }
 
-button {
+#login button {
     background-color: #307351;
     color: white;
     border: none;
@@ -60,6 +60,6 @@ button {
     transition: .4s;
 }
 
-button:hover {
+#login button:hover {
     filter: brightness(.92);
 }

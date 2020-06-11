@@ -1,0 +1,73 @@
+#userProdutos {
+    width: 80%;
+    max-width: 80%;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 20px;
+    color: rgb(86, 87, 88);
+}
+
+.product {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    background-color: white;
+    border-radius: 5px;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.productPic {
+    min-width: 45%;
+    min-height: 300px;
+    margin-right: 20px;
+    background-color: red;
+    border-radius: 5px;
+}
+
+.productInfo {
+    margin-left: 20px;
+    padding: 10px 20px 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.productBaixo {
+    display: flex;
+    margin-top: 20px;
+}
+
+.productCima p {
+    margin-top: 20px;
+    font-weight: 500;
+    font-size: 17px;
+}
+
+.productBaixo p + p {
+    margin-left: 20px;
+}
+
+#buttonUserProduto {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#buttonUserProduto button {
+    background-color: seagreen;
+    color: white;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 5px;
+    border: none;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: .5s;
+}
+
+#buttonUserProduto button:hover {
+    filter: brightness(.90);
+}

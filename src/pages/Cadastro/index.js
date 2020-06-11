@@ -26,9 +26,9 @@ const Cadastro = () => {
         .then(response => { 
 
          if(response.data.sucess) {
-           history.push({
-               pathname: "/", token: `Bearer ${response.data.token}`
-            })
+            localStorage.setItem("LojaVirtual", `Bearer ${response.data.token}`)
+            localStorage.setItem("LojaVirtualId", response.data.id)
+            history.push("/")
          }   
          else if (response.data.error){
              alert(response.data.error)

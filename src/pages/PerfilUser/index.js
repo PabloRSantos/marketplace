@@ -1,14 +1,13 @@
 import React, {useEffect, useState} from "react"
 import Header from "../../components/header"
 import api from "../../services/api"
-import {useLocation, Link, useHistory} from "react-router-dom"
+import {Link, useHistory} from "react-router-dom"
 import "./style.css"
 
 const Perfil = () => {
     const history = useHistory()
-    const location = useLocation()
-    const token = location.token
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState("")
+    const token = localStorage.getItem("LojaVirtual")
 
     useEffect(() => {
         api.get(`user/profile`, {headers: {autorizacao: token}})
@@ -17,25 +16,31 @@ const Perfil = () => {
                 alert(response.data.error)
                 history.push("/")
             }
-            setUser(response.data.user[0])
+            const { nome } = response.data.user[0]
+            setUser(nome)
         }).catch(() => {
             history.push("/")
         })
     })
+
+    function handleQuit(){
+        localStorage.setItem("LojaVirtual", "null")
+    }
     
     
     return (
         <>
-        <Header token={token}/>
+        <Header />
         <main id="PerfilUser">
             <div id="infosPerfil">
-                <section id="user"> <h2>Olá, {user.nome}, o que deseja fazer?</h2></section>
+                <section id="user"> <h2>Olá, {user}, o que deseja fazer?</h2></section>
                <ul id="navUser">
-                    <Link to={{pathname: "/user/dados", token: token}} className="link">Meu dados</Link>
-                    <Link to={{pathname: "/user/compras", token: token}}  className="link">Minhas compras</Link>
-                    <Link to={{pathname: "/user/vendas", token: token}}  className="link">Minhas vendas</Link>
-                    <Link to={{pathname: "/user/chat", token: token}}  className="link">Chat</Link>
-                    <Link to="/" className="link">Sair</Link>
+                    <Link to="/user/dados" className="link">Meu dados</Link>
+                    <Link to="/user/compras" className="link">Minhas compras</Link>
+                    <Link to="/user/ultimasVendas" className="link">Últimas vendas</Link>
+                    <Link to="/user/produtos" className="link">Meus produtos</Link>
+                    <Link to="/user/chat" className="link">Chat</Link>
+                    <Link to="/" onClick={handleQuit} className="link">Sair</Link>
                 </ul> 
             </div>
         </main>

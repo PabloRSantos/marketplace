@@ -39,7 +39,7 @@ br {
     margin: 30px 0;
 }
 
-button {
+#cadastro button {
     background-color: #307351;
     color: white;
     border: none;
@@ -54,6 +54,6 @@ button {
     transition: .4s;
 }
 
-button:hover {
+#cadastro button:hover {
     filter: brightness(.92);
 }

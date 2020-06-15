@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react"
-import Header from "../../components/header"
 import api from "../../services/api"
 import {Link, useHistory} from "react-router-dom"
 import "./style.css"
@@ -14,6 +13,7 @@ const Perfil = () => {
         .then(response => {
             if(response.data.error){
                 alert(response.data.error)
+                localStorage.removeItem("LojaVirtual")
                 history.push("/")
             }
             const { nome } = response.data.user[0]
@@ -30,7 +30,6 @@ const Perfil = () => {
     
     return (
         <>
-        <Header />
         <main id="PerfilUser">
             <div id="infosPerfil">
                 <section id="user"> <h2>Olá, {user}, o que deseja fazer?</h2></section>

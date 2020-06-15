@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react"
-import Header from "../../../components/header"
 import api from "../../../services/api"
 import { useHistory } from "react-router-dom"
 import "./style.css"
@@ -29,7 +28,6 @@ useEffect(() => {
 
     return (
         <>
-            <Header />
             <main id="userDados">
                 <p>Nome: {dadosUser.nome}</p>
                 <p>Email: {dadosUser.email}</p>

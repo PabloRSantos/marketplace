@@ -14,7 +14,7 @@
     background-color: white;
     border-radius: 5px;
     max-width: 80%;
-    margin: 0 auto;
+    margin: 0px auto 40px;
 }
 
 .productPic {
@@ -29,6 +29,7 @@
     margin-left: 20px;
     padding: 10px 20px 10px 0;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     justify-content: space-between;
 }

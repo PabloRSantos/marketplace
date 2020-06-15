@@ -2,7 +2,6 @@ import React, {useState} from "react"
 import "./style.css"
 import {useHistory} from "react-router-dom"
 import api from "../../services/api"
-import Header from "../../components/header"
 
 const Login = () => {
     const [formData, setFormData] = useState([])
@@ -35,7 +34,6 @@ const Login = () => {
 
     return (
         <main id="login">
-          <Header />  
             <div id="form">
                 <form onSubmit={handleSubmit}>
                     <div className="campo">

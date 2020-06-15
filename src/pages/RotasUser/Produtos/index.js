@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react"
-import Header from "../../../components/header"
 import api from "../../../services/api"
 import './style.css'
 import {Link} from "react-router-dom"
@@ -22,10 +21,9 @@ const UserProducts = () => {
 
     return (
         <>
-            <Header />
             <main id="userProdutos">
                 <div id="buttonUserProduto">
-                   <Link to="/users/addProduto">
+                   <Link to="/user/addProduto">
                    <button onClick={addProduct}>Adicionar Produto</button>   </Link>
                 </div>
                 {products.length == 0 ? (

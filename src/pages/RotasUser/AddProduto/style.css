@@ -1,0 +1,117 @@
+#AddProduto {
+    width: 50%;
+    max-width: 50%;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 20px;
+    color: rgb(116, 134, 153);
+}
+
+#AddProduto form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+
+    border-radius: 8px;
+    background-color: white;
+    padding: 30px;
+}
+
+#AddProduto input {
+  margin-top: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: #F6F5F4;
+  width: 100%;
+  color:  rgb(86, 87, 88);
+  font-size: 17px;
+  padding: 10px;
+}
+
+#AddProduto textarea {
+    margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #F6F5F4;
+    width: 100%;
+    color:  rgb(86, 87, 88);
+    font-size: 17px;
+    padding: 10px;
+    resize: none;
+    height: 250px;
+}
+
+#AddProduto .campo {
+    width: 70%;
+    margin-top: 20px;
+}
+
+#AddProduto .campoGrupo {
+    display: flex;
+    margin-top: 20px;
+    width: 70%;
+    max-width: 70%;
+    justify-content: center;
+    align-items: flex-end;
+ }
+
+
+  #AddProduto .campoGrupo .tag  {
+     flex: 3;
+     margin-left: 8px;
+ }
+ 
+ #AddProduto .campoGrupo .unidade {
+    flex: 1;
+    margin-right: 8px;
+ }
+
+ #AddProduto .campoGrupo .preco {
+     flex: 1;
+     margin-left: 8px;
+ }
+
+ #AddProduto .campoGrupo .categoria {
+    flex: 3;
+    margin-right: 8px;
+ }
+
+#AddProduto select {
+    background-color: #F6F5F4;
+    color: rgb(116, 134, 153);
+    height: 40px;
+    width: 100%;
+    margin-top: 5px;
+    max-width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    background: url(http://www.webcis.com.br/images/imagens-noticias/select/ico-seta-appearance.gif) no-repeat #eeeeee; 
+    -webkit-appearance: none; 
+   -moz-appearance: none;
+   appearance: none; 
+    background-position: 100% center;
+}
+
+#AddProduto button {
+    width: 70%;
+    max-width: 70%;
+    padding: 10px;
+    margin-top: 30px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+    background-color: seagreen;
+    transition: filter .5s;
+}
+
+#AddProduto button:hover {
+    filter: brightness(.90);
+}
+

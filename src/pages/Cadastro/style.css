@@ -3,7 +3,7 @@
     color: rgb(86, 87, 88);
 }
 
-#form {
+#cadastro #form {
     width: 50%;
     margin: 0 auto;
     margin-top: 50px;
@@ -15,7 +15,7 @@
     padding: 30px;
 }
 
-input {
+#cadastro input {
     border: none;
     border-radius: 5px;
     background-color: #F6F5F4;
@@ -26,16 +26,16 @@ input {
     padding: 10px;
 }
 
-label {
+#cadastro label {
     font-weight: 500;
     margin-bottom: 20px;
 }
 
-br {
+#cadastro br {
     line-height: 30px;
 }
 
-.campo {
+#cadastro .campo {
     margin: 30px 0;
 }
 

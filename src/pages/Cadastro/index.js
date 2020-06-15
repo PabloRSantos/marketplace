@@ -2,7 +2,7 @@ import React, {useState} from "react"
 import "./style.css"
 import api from "../../services/api"
 import {useHistory} from "react-router-dom"
-import Header from "../../components/header"
+
 
 const Cadastro = () => {
     const [formData, setFormData] = useState({
@@ -38,7 +38,6 @@ const Cadastro = () => {
     
     return (
         <main id="cadastro">
-            <Header />
             <div id="form">
                 <form onSubmit={handleSubmit}>
                     <div className="campo">

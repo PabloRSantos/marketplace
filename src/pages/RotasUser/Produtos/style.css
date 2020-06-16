@@ -15,19 +15,44 @@
     border-radius: 5px;
     max-width: 80%;
     margin: 0px auto 40px;
+    position: relative;
+    cursor: pointer;
+}
+
+.delete {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    font-weight: 600;
+    color: rgb(86, 87, 88);
+    cursor: pointer;
+    transition: color .3s;
+}
+
+.delete:hover {
+    color: red;
 }
 
 .productPic {
-    min-width: 45%;
+    width: 45%;
+    max-width: 45%;
     min-height: 300px;
-    margin-right: 20px;
-    background-color: red;
+    margin-right: 24px;
+    margin-left: 24px;
+    border-radius: 5px;
+}
+
+.productPic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 5px;
 }
 
 .productInfo {
     margin-left: 20px;
     padding: 10px 20px 10px 0;
+    width: 50%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;

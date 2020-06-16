@@ -5,14 +5,6 @@ import api from "../../services/api"
 
 const Header = (props) => {
     const [categorias, setCategorias] = useState([])
-    const [token, setToken] = useState("null")
- 
-    useEffect(() => {
-        if(localStorage.getItem("LojaVirtual")){
-        setToken(localStorage.getItem("LojaVirtual"))
-        }
-        return
-    }, [token])
 
     useEffect(() => {
         api.get("categorias")
@@ -27,7 +19,7 @@ const Header = (props) => {
                 <Link className="linkHeader" to="/"><h2>Logo</h2></Link>
                 <ul id="nav">
 
-                    {token.includes("null") ? (
+                    {!localStorage.getItem("LojaVirtual") ? (
                         <>
                             <Link className="linkHeader" to="/cadastro"><li>Crie sua conta</li></Link>
                             <Link className="linkHeader" to="/login"><li>Login</li></Link>

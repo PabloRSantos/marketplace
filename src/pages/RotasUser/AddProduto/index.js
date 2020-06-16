@@ -2,12 +2,14 @@ import React, {useState, useEffect} from "react"
 import api from "../../../services/api"
 import "./style.css"
 import {useHistory} from "react-router-dom"
+import DropZone from "../../../components/Dropzone"
 
 const AddProduto = () => {
     const [formData, setFormData] = useState([])
     const [selected, setSelected] = useState([])
     const [categorias, setCategorias] = useState([])
     const history = useHistory()
+    const [selectedFile, setSelectedFile] = useState()
 
     useEffect(() => {
         api.get("categorias")
@@ -32,12 +34,26 @@ const AddProduto = () => {
 
     const id = localStorage.getItem("LojaVirtualId")
 
-    formData.user_id = id
-    formData.categorias = [selected]
-    formData.modelo = "aaa"
+    const {nome, preco, descricao, cores, unidades} = formData
+
+    
+    const data = new FormData()
+
+    data.append("nome", nome)
+    data.append("preco", preco)
+    data.append("descricao", descricao)
+    data.append("cores", cores)
+    data.append("unidades", unidades)
+    data.append("modelo", "aaa")
+    data.append("categorias[]", [selected])
+    data.append("user_id", id)
+
+    if (selectedFile) {
+        data.append("imagem", selectedFile)
+    }
 
 
-    api.post("products", formData)
+    api.post("products", data)
     .then(response => {
         console.log(response.data)
         if(response.data.sucess){
@@ -109,6 +125,8 @@ return (
                 
                 <input type="text" placeholder="Ex: Vermelho, Azul, Verde" name="cores" onChange={handleChange} id="cores"/>
             </div>
+
+            <DropZone onFileUploaded={setSelectedFile}/>
 
             <button onClick={submitForm}>Publicar</button>
 

@@ -24,7 +24,7 @@ const Perfil = () => {
     })
 
     function handleQuit(){
-        localStorage.setItem("LojaVirtual", "null")
+        localStorage.removeItem("LojaVirtual")
     }
     
     

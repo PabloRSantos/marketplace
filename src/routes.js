@@ -8,6 +8,7 @@ import Perfil from "./pages/PerfilUser"
 import UserDados from "./pages/RotasUser/Dados"
 import UserProdutos from "./pages/RotasUser/Produtos"
 import UserAddProduto from "./pages/RotasUser/AddProduto"
+import ProductShow from "./pages/Product"
 
 
 const Routes = () => {
@@ -21,6 +22,7 @@ const Routes = () => {
          <Route component={UserDados} path="/user/dados"/>
          <Route component={UserProdutos} path="/user/produtos"/>
          <Route component={UserAddProduto} path="/user/addProduto"/> 
+         <Route component={ProductShow} path="/product/:id"/> 
          </>
     )
 }

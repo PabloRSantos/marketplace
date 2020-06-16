@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react"
 import "./style.css"
 import api from "../../services/api"
 import { FiSearch } from "react-icons/fi"
+import {Link} from "react-router-dom"
 
 const Categoria = (props) => {
     const [products, setProducts] = useState([])
@@ -39,12 +40,16 @@ const Categoria = (props) => {
             <section>
                 <div className="cards">
                    {products.map(prod => (
+                       <Link to={`/product/${prod.id}`}>
                        <div id={prod.id} className="product">
-                           <div className="imagem"></div>
+                           <div className="imagem">
+                                           <img src={`http://localhost:3333/uploads/${prod.imagem}`}/>
+                                       </div>
                             <div className="preco">
-                            <p>{prod.preco}</p> 
+                            <p>{`R$${prod.preco}`}</p> 
                             </div>
                        </div>
+                       </Link>
                    ))}
                    </div>
                    </section>
@@ -52,12 +57,16 @@ const Categoria = (props) => {
                 <section>
                 <div className="cards">
                    {searchResult.map(prod => (
-                       <div id={prod.id} className="product">
-                           <div className="imagem"></div>
-                            <div className="preco">
-                            <p>{prod.preco}</p> 
-                            </div>
-                       </div>
+                       <Link to={`product/${prod.id}`}>
+                        <div id={prod.id} className="product">
+                                <div className="imagem">
+                                <img src={`http://localhost:3333/uploads/${prod.imagem}`}/>
+                                 </div>
+                                <div className="preco">
+                                <p>{`R$${prod.preco}`}</p> 
+                                </div>
+                        </div>
+                       </Link>
                    ))}
                    </div>
                    </section>

@@ -13,6 +13,7 @@ const Home = () => {
     useEffect(() => {
         api.get("products?ordenar=id")
         .then(response => {
+            console.log(response.data)
             setProdsRecentes(response.data)
         })
         .catch(() => alert("Erro na conexao do servidor"))
@@ -62,9 +63,11 @@ const Home = () => {
                             <div className="cards">
                                {prodsRecentes.map(prod => (
                                    <div id={prod.id} className="product">
-                                       <div className="imagem"></div>
+                                       <div className="imagem">
+                                           <img src={`http://localhost:3333/uploads/${prod.imagem}`}/>
+                                       </div>
                                         <div className="preco">
-                                        <p>{prod.preco}</p> 
+                                        <p>{`R$${prod.preco}`}</p> 
                                         </div>
                                    </div>
                                ))}
@@ -76,9 +79,11 @@ const Home = () => {
                             <div className="cards">
                                {prodsVendidos.map(prod => (
                                    <div id={prod.id} className="product">
-                                       <div className="imagem"></div>
+                                       <div className="imagem">
+                                           <img src={`http://localhost:3333/uploads/${prod.imagem}`}/>
+                                       </div>
                                         <div className="preco">
-                                        <p>{prod.preco}</p> 
+                                        <p>{`R$${prod.preco}`}</p> 
                                         </div>
                                    </div>
                                ))}
@@ -90,9 +95,11 @@ const Home = () => {
                             <div className="cards">
                                {prodsPrecos.map(prod => (
                                    <div id={prod.id} className="product">
-                                       <div className="imagem"></div>
+                                       <div className="imagem">
+                                           <img src={`http://localhost:3333/uploads/${prod.imagem}`}/>
+                                       </div>
                                         <div className="preco">
-                                        <p>{prod.preco}</p> 
+                                        <p>{`R$${prod.preco}`}</p> 
                                         </div>
                                    </div>
                                ))}
@@ -105,9 +112,11 @@ const Home = () => {
                                 <div className="cards">
                                {searchResult.map(prod => (
                                    <div id={prod.id} className="product">
-                                       <div className="imagem"></div>
+                                        <div className="imagem">
+                                           <img src={`http://localhost:3333/uploads/${prod.imagem}`}/>
+                                       </div>
                                         <div className="preco">
-                                        <p>{prod.preco}</p> 
+                                        <p>{`R$${prod.preco}`}</p> 
                                         </div>
                                    </div>
                                ))}

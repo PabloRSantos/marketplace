@@ -5,7 +5,7 @@ import {Link} from "react-router-dom"
 
 const UserProducts = () => {
     const [products, setProducts] = useState([])
-
+    const [deleteProducts, setDeleteProducts] = useState(0)
 
     useEffect(() => {
         const id = localStorage.getItem("LojaVirtualId")
@@ -13,10 +13,19 @@ const UserProducts = () => {
             .then(response => {
                 setProducts(response.data)
             })
-    }, [])
+    }, [deleteProducts])
 
-    function addProduct() {
-
+    function deleteProduct(id) {
+        if(window.confirm("Tem certeza que quer deletar esse produto?")) {
+            api.delete(`products/${id}`)
+            .then((response) => {
+                alert(response.data.message)
+                setDeleteProducts(deleteProducts + 1)
+            })
+            .catch(() => alert("Erro ao deletar, tente novamente"))
+        } else {
+            return
+        }
     }
 
     return (
@@ -24,17 +33,17 @@ const UserProducts = () => {
             <main id="userProdutos">
                 <div id="buttonUserProduto">
                    <Link to="/user/addProduto">
-                   <button onClick={addProduct}>Adicionar Produto</button>   </Link>
+                   <button>Adicionar Produto</button>   </Link>
                 </div>
                 {products.length == 0 ? (
                     <p>Nenhum produto encontrado</p>
                 ) : (
                         products.map(product => (
                             <div key={product.id} className="product">
-
-                                <div className="productPic">
-
-                                </div>
+                                <p onClick={() => deleteProduct(product.id)} className="delete">X</p>
+                            <div className="productPic">
+                             <img src={`http://localhost:3333/uploads/${product.imagem}`}/>
+                                       </div>
                                 <div className="productInfo">
                                     <div className="productCima">
                                         <h1>{product.nome}</h1>

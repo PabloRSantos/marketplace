@@ -3,6 +3,8 @@ import api from "../../../services/api"
 import "./style.css"
 import {useHistory} from "react-router-dom"
 import DropZone from "../../../components/Dropzone"
+import Header from "../../../components/header"
+import Sucess from "../../../components/Sucess"
 
 const AddProduto = () => {
     const [formData, setFormData] = useState([])
@@ -10,6 +12,7 @@ const AddProduto = () => {
     const [categorias, setCategorias] = useState([])
     const history = useHistory()
     const [selectedFile, setSelectedFile] = useState()
+    const [classSucess, setClassSucess] = useState("hidden")
 
     useEffect(() => {
         api.get("categorias")
@@ -55,10 +58,8 @@ const AddProduto = () => {
 
     api.post("products", data)
     .then(response => {
-        console.log(response.data)
         if(response.data.sucess){
-            alert(response.data.sucess)
-            history.push("/user/produtos")
+            setClassSucess("show")
         }
         else {
             alert("Erro ao cadastrar, tente novamente")
@@ -68,7 +69,15 @@ const AddProduto = () => {
     }
     
 return (
-    <>
+    <>      
+
+     <Sucess
+     message={"Postado com sucesso!"}
+     classSucess={classSucess}
+     confirm={() => history.push("/user/produtos")}
+     />
+
+     <Header />
     <main id="AddProduto">
         <form>
             <div className="campo">

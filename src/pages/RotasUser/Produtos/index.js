@@ -2,10 +2,13 @@ import React, { useEffect, useState } from "react"
 import api from "../../../services/api"
 import './style.css'
 import {Link} from "react-router-dom"
+import Header from "../../../components/header"
+import Confirm from "../../../components/Confirm"
 
 const UserProducts = () => {
     const [products, setProducts] = useState([])
     const [deleteProducts, setDeleteProducts] = useState(0)
+    const [classAlert, setClassAlert] = useState("hidden")
 
     useEffect(() => {
         const id = localStorage.getItem("LojaVirtualId")
@@ -15,21 +18,34 @@ const UserProducts = () => {
             })
     }, [deleteProducts])
 
-    function deleteProduct(id) {
-        if(window.confirm("Tem certeza que quer deletar esse produto?")) {
-            api.delete(`products/${id}`)
+    function Confirmar (boolean) {
+        if (boolean == 1) {
+            deleteProduct(Number(classAlert))
+        } else {
+            setClassAlert("hidden")
+        }
+    }
+    
+
+    function deleteProduct (id){
+           api.delete(`products/${id}`)
             .then((response) => {
                 alert(response.data.message)
                 setDeleteProducts(deleteProducts + 1)
+                setClassAlert("hidden")
             })
             .catch(() => alert("Erro ao deletar, tente novamente"))
-        } else {
-            return
-        }
     }
 
     return (
-        <>
+        <> 
+            <Confirm
+            message={"Confirmar exclusão?"}
+            classAlert={classAlert}
+            confirm={() => Confirmar(1)}
+            cancel={() => Confirmar(0)}/>
+            
+            <Header />
             <main id="userProdutos">
                 <div id="buttonUserProduto">
                    <Link to="/user/addProduto">
@@ -40,7 +56,7 @@ const UserProducts = () => {
                 ) : (
                         products.map(product => (
                             <div key={product.id} className="product">
-                                <p onClick={() => deleteProduct(product.id)} className="delete">X</p>
+                                <p onClick={() => setClassAlert(product.id)} className="delete">X</p>
                             <div className="productPic">
                              <img src={`http://localhost:3333/uploads/${product.imagem}`}/>
                                        </div>

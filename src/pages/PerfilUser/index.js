@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react"
 import api from "../../services/api"
 import {Link, useHistory} from "react-router-dom"
 import "./style.css"
+import Header from "../../components/header"
 
 const Perfil = () => {
     const history = useHistory()
@@ -31,6 +32,7 @@ const Perfil = () => {
     return (
         <>
         <main id="PerfilUser">
+            <Header />
             <div id="infosPerfil">
                 <section id="user"> <h2>Olá, {user}, o que deseja fazer?</h2></section>
                <ul id="navUser">

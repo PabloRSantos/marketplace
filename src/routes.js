@@ -1,5 +1,5 @@
 import React from "react"
-import {Route} from "react-router-dom"
+import {Route, BrowserRouter} from "react-router-dom"
 import Home from "./pages/Home"
 import Categoria from './pages/Categoria'
 import Cadastro from "./pages/Cadastro"
@@ -13,7 +13,7 @@ import ProductShow from "./pages/Product"
 
 const Routes = () => {
     return (
-        <>
+        <BrowserRouter>
          <Route component={Home} path="/" exact/>
          <Route component={Categoria} path="/categoria/:nome" />
          <Route component={Cadastro} path="/cadastro"/>
@@ -23,7 +23,7 @@ const Routes = () => {
          <Route component={UserProdutos} path="/user/produtos"/>
          <Route component={UserAddProduto} path="/user/addProduto"/> 
          <Route component={ProductShow} path="/product/:id"/> 
-         </>
+         </BrowserRouter>
     )
 }
 

@@ -2,40 +2,12 @@ import React, {useEffect, useState} from "react"
 import "./style.css"
 import api from "../../services/api"
 import { FiSearch } from "react-icons/fi"
+import Header from "../../components/header"
+import Product from "../../components/Products"
 
 const Home = () => {
-    const [prodsRecentes, setProdsRecentes] = useState([])
-    const [prodsVendidos, setProdsVendidos] = useState([])
-    const [prodsPrecos, setProdsPrecos] = useState([])
     const [search, setSearch] = useState("")
     const [searchResult, setSearchResult] = useState("null")
-
-    useEffect(() => {
-        api.get("products?ordenar=id")
-        .then(response => {
-            console.log(response.data)
-            setProdsRecentes(response.data)
-        })
-        .catch(() => alert("Erro na conexao do servidor"))
-    }, [])
-
-    
-    useEffect(() => {
-        api.get("products?ordenar=vendidos")
-        .then(response => {
-            setProdsVendidos(response.data)
-        })
-        .catch(() => alert("Erro na conexao do servidor"))
-    }, [])
-
-    
-    useEffect(() => {
-        api.get("products?ordenar=preco")
-        .then(response => {
-            setProdsPrecos(response.data)
-        })
-        .catch(() => alert("Erro na conexao do servidor"))
-    }, [])
 
     
     function ChangeSearch(event){
@@ -50,6 +22,7 @@ const Home = () => {
 
     return (
         <main id="home">
+            <Header />
             <div className="divSearch">
                     <input type="text" name="search" id="search" onChange={ChangeSearch} placeholder="Faça sua pesquisa" />
                     <FiSearch onClick={submitSearch} id="iconSearch" />
@@ -58,67 +31,32 @@ const Home = () => {
 
                 {searchResult.includes("null") ? (
                     <>
-                        <section>
-                        <h1>Mais Recentes</h1>
-                            <div className="cards">
-                               {prodsRecentes.map(prod => (
-                                   <div id={prod.id} className="product">
-                                       <div className="imagem">
-                                           <img src={`http://localhost:3333/uploads/${prod.imagem}`}/>
-                                       </div>
-                                        <div className="preco">
-                                        <p>{`R$${prod.preco}`}</p> 
-                                        </div>
-                                   </div>
-                               ))}
-                               </div>
-                               </section>
+                        <Product 
+                        titulo={"Mais baratos"}
+                        query={"ordenar=preco"}/>
+                        
+                        <Product 
+                        titulo={"Mais Recentes"}
+                        query={"ordenar=id"}/>
+                        
+                        <Product 
+                        titulo={"Mais vendidos"}
+                        query={"ordenar=vendidos"}/>
             
-                               <section>
-                        <h1>Mais Vendidos</h1>
-                            <div className="cards">
-                               {prodsVendidos.map(prod => (
-                                   <div id={prod.id} className="product">
-                                       <div className="imagem">
-                                           <img src={`http://localhost:3333/uploads/${prod.imagem}`}/>
-                                       </div>
-                                        <div className="preco">
-                                        <p>{`R$${prod.preco}`}</p> 
-                                        </div>
-                                   </div>
-                               ))}
-                               </div>
-                               </section>
-            
-                                <section>
-                        <h1>Mais Baratos</h1>
-                            <div className="cards">
-                               {prodsPrecos.map(prod => (
-                                   <div id={prod.id} className="product">
-                                       <div className="imagem">
-                                           <img src={`http://localhost:3333/uploads/${prod.imagem}`}/>
-                                       </div>
-                                        <div className="preco">
-                                        <p>{`R$${prod.preco}`}</p> 
-                                        </div>
-                                   </div>
-                               ))}
-                               </div>
-                               </section>
-                               </>
+                    </>
                 ) : (
                     <>
                          <section>
-                                <div className="cards">
+                            <div className="cards">
                                {searchResult.map(prod => (
-                                   <div id={prod.id} className="product">
-                                        <div className="imagem">
-                                           <img src={`http://localhost:3333/uploads/${prod.imagem}`}/>
-                                       </div>
-                                        <div className="preco">
-                                        <p>{`R$${prod.preco}`}</p> 
-                                        </div>
-                                   </div>
+                                <div id={prod.id} className="product">
+                                <div className="imagem">
+                                <img src={`http://localhost:3333/uploads/${prod.imagem}`}/>
+                                </div>
+                                <div className="preco">
+                                <p>{`R$${prod.preco}`}</p> 
+                                </div>
+                                </div>
                                ))}
                                </div>
                                </section>

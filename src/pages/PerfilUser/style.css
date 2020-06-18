@@ -1,12 +1,11 @@
 #PerfilUser {
     width: 100%;
-    display: flex;
-    justify-content: center;
     color: rgb(86, 87, 88);
 }
 
 #infosPerfil {
     background-color: white;
+    margin: 0 auto;
     margin-top: 50px;
     width: 600px;
     max-width: 80%;
@@ -25,7 +24,7 @@
     display: block;
 }
 
-.link {
+#PerfilUser .link {
     color: rgb(86, 87, 88);
     text-decoration: none;
     display: block;
@@ -37,7 +36,7 @@
     border-radius: 5px;
 }
 
-.link:hover {
+#PerfilUser .link:hover {
     background-color: #307351;
     color: white;
 }

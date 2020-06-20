@@ -24,7 +24,6 @@ const Login = () => {
          }   
          else {
              localStorage.setItem("LojaVirtual", `Bearer ${response.data.token}`)
-             
              localStorage.setItem("LojaVirtualId", response.data.id)
             history.push("/")
          }

@@ -5,22 +5,23 @@ import "./style.css"
 import Header from "../../../components/header"
 
 const UserDados = () => {
-const token = localStorage.getItem("LojaVirtual")
+const id = localStorage.getItem("LojaVirtualId")
 const [dadosUser, setDadosUser] = useState({})
-const [classProfile, setClassProfile] = useState("hidden")
+const [classProfile, setClassProfile] = useState("hidsssden")
+const [newFoto, setNewFoto] = useState("")
+
 
 const history = useHistory()
 
 
 
 useEffect(() => {
-        api.get(`user/profile`, {headers: {autorizacao: token}})
+        api.get(`user/profile/${id}`)
         .then(response => {
             if(response.data.error){
                 alert(response.data.error)
                 return history.push('/')
             }
-
             else 
             setDadosUser(response.data.user[0])
         })
@@ -29,7 +30,21 @@ useEffect(() => {
             history.push("/perfil")
         })
 
-}, [])
+}, [newFoto])
+
+function changeFile(event){
+    event.preventDefault()
+
+    const file = event.target.files[0]
+
+    const data = new FormData()
+
+    data.append("foto", file)
+    data.append("id", localStorage.getItem("LojaVirtualId"))
+    
+    api.put("user/profilePic", data)
+    .then(response => setNewFoto(response.data.sucess))
+}
 
     return (
         <>
@@ -39,8 +54,12 @@ useEffect(() => {
                 onMouseOver={() => setClassProfile("show")}
                 onMouseOut={() => setClassProfile("hidden")}>
 
-                    <img src="http://localhost:3333/uploads/a1b7978f2792-_O85_Y3E%20(2).jpg" alt="Foto de Perfil"/>
-                    <p className={classProfile}>Alterar</p>
+                    <img src={`http://localhost:3333/uploads/user/${dadosUser.foto}`} alt="Foto de Perfil"/>
+                    
+                    <div>
+                    <label htmlFor="file" className={classProfile} id="label">Alterar</label>
+                    <input hidden onChange={changeFile} accept="image/*" type="file" name="file" id="file"/>
+                    </div>
 
                 </div>
 

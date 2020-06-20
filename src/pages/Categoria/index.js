@@ -43,7 +43,7 @@ const Categoria = (props) => {
                        <div id={prod.id} className="product">
                             <Link to={`/product/${prod.id}`}>
                            <div className="imagem">
-                                           <img src={`http://localhost:3333/uploads/${prod.imagem}`}/>
+                                           <img src={`http://localhost:3333/uploads/products/${prod.imagem}`}/>
                                        </div>
                             <div className="preco">
                             <p>{`R$${prod.preco}`}</p> 
@@ -60,7 +60,7 @@ const Categoria = (props) => {
                        <Link to={`product/${prod.id}`}>
                         <div id={prod.id} className="product">
                                 <div className="imagem">
-                                <img src={`http://localhost:3333/uploads/${prod.imagem}`}/>
+                                <img src={`http://localhost:3333/uploads/products/${prod.imagem}`}/>
                                  </div>
                                 <div className="preco">
                                 <p>{`R$${prod.preco}`}</p> 

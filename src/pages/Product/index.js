@@ -20,7 +20,7 @@ const Product = (props) => {
         <Header />
         <main id="mainProduct">
             <div id="imagem">
-                <img src={`http://localhost:3333/uploads/${product.imagem}`} alt="imagem do produto"/>
+                <img src={`http://localhost:3333/uploads/products/${product.imagem}`} alt="imagem do produto"/>
             </div>
             <div id="infosSide">
 
@@ -47,7 +47,7 @@ const Product = (props) => {
             query={"ordenar=preco"}/>
         </div>
 
-        <Comentarios />
+        <Comentarios id={props.match.params.id}/>
         </main>
         </>
     )

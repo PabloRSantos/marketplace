@@ -58,7 +58,7 @@ const UserProducts = () => {
                             <div key={product.id} className="product">
                                 <p onClick={() => setClassAlert(product.id)} className="delete">X</p>
                             <div className="productPic">
-                             <img src={`http://localhost:3333/uploads/${product.imagem}`}/>
+                             <img src={`http://localhost:3333/uploads/products/${product.imagem}`}/>
                                        </div>
                                 <div className="productInfo">
                                     <div className="productCima">

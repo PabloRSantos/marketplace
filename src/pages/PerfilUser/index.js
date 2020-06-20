@@ -7,14 +7,15 @@ import Header from "../../components/header"
 const Perfil = () => {
     const history = useHistory()
     const [user, setUser] = useState("")
-    const token = localStorage.getItem("LojaVirtual")
+    const id = localStorage.getItem("LojaVirtualId")
 
     useEffect(() => {
-        api.get(`user/profile`, {headers: {autorizacao: token}})
+        api.get(`user/profile/${id}`)
         .then(response => {
             if(response.data.error){
                 alert(response.data.error)
                 localStorage.removeItem("LojaVirtual")
+                localStorage.removeItem("LojaVirtualId")
                 history.push("/")
             }
             const { nome } = response.data.user[0]
@@ -26,6 +27,7 @@ const Perfil = () => {
 
     function handleQuit(){
         localStorage.removeItem("LojaVirtual")
+        localStorage.removeItem("LojaVirtualId")
     }
     
     

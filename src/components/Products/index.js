@@ -22,7 +22,7 @@ const Products = (props) => {
                    <div id={prod.id} className="product">
                          <Link className="link" to={`/product/${prod.id}`}>
                        <div className="imagem">
-                           <img src={`http://localhost:3333/uploads/${prod.imagem}`}/>
+                           <img src={`http://localhost:3333/uploads/products/${prod.imagem}`}/>
                        </div>
                         <div className="preco">
                         <p>{`R$${prod.preco}`}</p> 

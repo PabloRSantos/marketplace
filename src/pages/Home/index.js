@@ -51,7 +51,7 @@ const Home = () => {
                                {searchResult.map(prod => (
                                 <div id={prod.id} className="product">
                                 <div className="imagem">
-                                <img src={`http://localhost:3333/uploads/${prod.imagem}`}/>
+                                <img src={`http://localhost:3333/uploads/products/${prod.imagem}`}/>
                                 </div>
                                 <div className="preco">
                                 <p>{`R$${prod.preco}`}</p> 

@@ -56,9 +56,13 @@
 
 }
 
-#home #contentProducts .preco p {
+#categoria #contentProducts .preco p {
     margin-left: 16px;
     font-size: 22px;
     font-weight: 600;
     color:  rgb(86, 87, 88);
+}
+
+#categoria .link {
+    text-decoration: none;
 }

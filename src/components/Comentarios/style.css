@@ -1,7 +1,28 @@
+#comentarios::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  body::-webkit-scrollbar {
+    width: 6px;
+  }
+
+
+::-webkit-scrollbar-thumb {
+    background-color: #28945c;
+    border-radius: 5px;
+    height: 10px;
+}
+
 #contentComentarios {
     grid-area: comentarios;
-    padding: 0 30px 30px 30px;
-    margin-top: 24px;
+    padding: 24px 30px 30px 30px;
+}
+
+#contentComentarios #comentarios{
+    max-height: 700px;
+    overflow-y: scroll;
+    scrollbar-color: black;
+    scrollbar-width: 50px;
 }
 
 #contentComentarios #newComentario {
@@ -12,6 +33,8 @@
 
 .imgUser {
     border-radius: 50%;
+    min-width: 75px;
+    min-height: 75px;
     width: 75px;
     height: 75px;
 }
@@ -63,7 +86,7 @@
     filter: brightness(.95)
 }
 
-#comentarios h2 {
+#contentComentarios h2 {
     margin-bottom: 32px;
     font-size: 40px;
     color: rgb(86, 87, 88);
@@ -71,7 +94,7 @@
 
 #contentComentarios .comentario {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 }
 
 #contentComentarios .comentario + .comentario {

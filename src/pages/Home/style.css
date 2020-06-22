@@ -107,3 +107,7 @@
     color:  rgb(86, 87, 88);
 }
 
+#home .link {
+    text-decoration: none;
+}
+

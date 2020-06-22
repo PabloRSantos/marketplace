@@ -12,12 +12,13 @@ const Categoria = (props) => {
     
 
     useEffect(() => {
-        api.get(`products?categoria=${props.location.id}`)
+        api.get(`products?categoria=${props.match.params.id}`)
         .then(response => {
             setProducts(response.data)
         })
 
-    }, [props.match.params.nome])
+    }, [props.match.params.id])
+
 
     function ChangeSearch(event){
         setSearch(event.target.value)
@@ -41,9 +42,9 @@ const Categoria = (props) => {
                 <div className="cards">
                    {products.map(prod => (
                        <div id={prod.id} className="product">
-                            <Link to={`/product/${prod.id}`}>
+                            <Link to={`/product/${prod.id}`} className="link">
                            <div className="imagem">
-                                           <img src={`http://localhost:3333/uploads/products/${prod.imagem}`}/>
+                                <img src={`http://localhost:3333/uploads/products/${prod.imagem}`}/>
                                        </div>
                             <div className="preco">
                             <p>{`R$${prod.preco}`}</p> 
@@ -57,7 +58,7 @@ const Categoria = (props) => {
                 <section>
                 <div className="cards">
                    {searchResult.map(prod => (
-                       <Link to={`product/${prod.id}`}>
+                       <Link className="link" to={`product/${prod.id}`}>
                         <div id={prod.id} className="product">
                                 <div className="imagem">
                                 <img src={`http://localhost:3333/uploads/products/${prod.imagem}`}/>

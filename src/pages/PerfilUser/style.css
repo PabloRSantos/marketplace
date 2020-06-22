@@ -5,12 +5,12 @@
 
 #infosPerfil {
     background-color: white;
-    margin: 0 auto;
-    margin-top: 50px;
+    margin: 50px auto;
     width: 600px;
     max-width: 80%;
     padding: 20px;
     border-radius: 5px;
+    box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.096);
 }
 
 #user {

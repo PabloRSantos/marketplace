@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react"
 import "./style.css"
 import { Link } from "react-router-dom"
 import api from "../../services/api"
+import {FaShoppingCart} from "react-icons/fa"
 
-const Header = (props) => {
+const Header = () => {
     const [categorias, setCategorias] = useState([])
 
     useEffect(() => {
@@ -30,7 +31,7 @@ const Header = (props) => {
 
                                 <Link className="linkHeader" to="chat"><li>Chat</li></Link>
 
-                                <Link className="linkHeader" to="carrinho"><li>Carrinho</li></Link>
+                                <Link className="linkHeader" to="/carrinho"><li><FaShoppingCart/></li></Link>
 
                             </>
                         )}
@@ -40,7 +41,7 @@ const Header = (props) => {
             <section id="categorias">
                 <ul>
                     {categorias.map(categoria => (
-                        <Link key={categoria.id} className="linkHeader" to={{pathname: `/categoria/${categoria.nome}`, id: categoria.id}} >
+                        <Link key={categoria.id} className="linkHeader" to={`/categoria/${categoria.id}`}>
                             <li>{categoria.nome}</li>
                         </Link>
                     ))}

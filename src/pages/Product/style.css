@@ -16,7 +16,7 @@
 #mainProduct #imagem {
     grid-area: img;
     padding: 30px;
-    border-bottom: 3px solid #d3d3d2;
+    border-bottom: 2px solid #d3d3d2;
 }
 
 #mainProduct #imagem img {
@@ -34,8 +34,8 @@
     flex-direction: column;
     justify-content: space-between;
 
-    border-left: 3px solid #d3d3d2;
-    border-bottom: 3px solid #d3d3d2;
+    border-left: 2px solid #d3d3d2;
+    border-bottom: 2px solid #d3d3d2;
 }
 
 #infosSide h1 {
@@ -65,7 +65,7 @@
 
 #productsSide{
     grid-area: side;
-    border-left: 3px solid #d3d3d2;
+    border-left: 2px solid #d3d3d2;
 }
 
 #productsSide h1 {
@@ -93,6 +93,7 @@
 
 #productsSide .product {
     margin: 30px auto;
+    padding: 0 30px;
 }
 
 
@@ -121,6 +122,7 @@
     justify-content: center;
     flex-wrap: wrap;
     width: 100%;
+    margin-top: 24px;
 }
 
 #buttonsProduct button{

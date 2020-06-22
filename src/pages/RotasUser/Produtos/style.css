@@ -7,7 +7,7 @@
     color: rgb(86, 87, 88);
 }
 
-.product {
+#userProdutos .product {
     display: flex;
     justify-content: center;
     padding: 20px 0;
@@ -17,9 +17,10 @@
     margin: 0px auto 40px;
     position: relative;
     cursor: pointer;
+    box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.096);
 }
 
-.delete {
+#userProdutos .delete {
     position: absolute;
     top: 8px;
     right: 16px;
@@ -29,11 +30,11 @@
     transition: color .3s;
 }
 
-.delete:hover {
+#userProdutos .delete:hover {
     color: red;
 }
 
-.productPic {
+#userProdutos .productPic {
     width: 45%;
     max-width: 45%;
     min-height: 300px;
@@ -42,14 +43,14 @@
     border-radius: 5px;
 }
 
-.productPic img {
+#userProdutos .productPic img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 5px;
 }
 
-.productInfo {
+#userProdutos .productInfo {
     margin-left: 20px;
     padding: 10px 20px 10px 0;
     width: 50%;
@@ -59,28 +60,28 @@
     justify-content: space-between;
 }
 
-.productBaixo {
+#userProdutos .productBaixo {
     display: flex;
     margin-top: 20px;
 }
 
-.productCima p {
+#userProdutos .productCima p {
     margin-top: 20px;
     font-weight: 500;
     font-size: 17px;
 }
 
-.productBaixo p + p {
+#userProdutos .productBaixo p + p {
     margin-left: 20px;
 }
 
-#buttonUserProduto {
+#userProdutos #buttonUserProduto {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-#buttonUserProduto button {
+#userProdutos #buttonUserProduto button {
     background-color: seagreen;
     color: white;
     padding: 10px;
@@ -94,6 +95,6 @@
     transition: .5s;
 }
 
-#buttonUserProduto button:hover {
+#userProdutos #buttonUserProduto button:hover {
     filter: brightness(.90);
 }

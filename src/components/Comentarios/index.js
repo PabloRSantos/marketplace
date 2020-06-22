@@ -7,7 +7,7 @@ const Comentarios = (props) => {
     const [userAtual, setUserAtual] = useState("")
     const id = localStorage.getItem("LojaVirtualId")
     const [formData, setFormData] = useState()
-    const [newComentario, setNewComentario] = useState(false)
+    
 
 useEffect(() => {
     api.get(`comentario?id=${props.id}`)
@@ -15,7 +15,7 @@ useEffect(() => {
         setComentarios(response.data)
     })
 
-}, [newComentario])
+}, [comentarios[0], props.id])
 
 
 useEffect(() => {
@@ -46,16 +46,16 @@ function submitComentario(event){
     formData.product_id = props.id
 
     api.post("comentario", formData)
-    .then(response => {
-        setNewComentario(response.data.sucess)
+    .then(() => {
+        setComentarios([false])
     })
 }
 
     return (
         <section id="contentComentarios">
-            
+               <h2>Ultimos Comentários</h2>
             <div id="comentarios">
-                <h2>Ultimos Comentários</h2>
+             
                 {comentarios.map(comentario => (
                       <div className="comentario">
                       <div className="imgUser">
@@ -67,7 +67,7 @@ function submitComentario(event){
                       </div>
                   </div>
                 ))}
-              
+               </div>
 
 
                 <div id="newComentario">
@@ -80,7 +80,6 @@ function submitComentario(event){
             </form>
             </div>
 
-            </div>
         </section>
     )
 

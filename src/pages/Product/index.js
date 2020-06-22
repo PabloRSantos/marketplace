@@ -15,6 +15,14 @@ const Product = (props) => {
         .then(response => setProduct(response.data))
     }, [props.match.params.id])
 
+    function addCarrinho(){
+        const product_id = product.id
+        const user_id = localStorage.getItem("LojaVirtualId")
+        
+        api.post("carrinho", {product_id, user_id})
+        .then(response => console.log(response.data))
+    }
+
     return (
         <>
         <Header />
@@ -35,7 +43,7 @@ const Product = (props) => {
                 </div>
 
                 <div id="buttonsProduct">
-            <button>Carrinho</button>
+            <button onClick={addCarrinho}>Carrinho</button>
             <button>Comprar</button>
         </div>
 

@@ -12,7 +12,7 @@ const Products = (props) => {
             setProds(response.data)
         })
         .catch(() => alert("Erro na conexao do servidor"))
-    }, [])
+    }, [props.query])
 
     return (
         <section>
@@ -20,7 +20,7 @@ const Products = (props) => {
             <div className="cards">
                {prods.map(prod => (
                    <div id={prod.id} className="product">
-                         <Link className="link" to={`/product/${prod.id}`}>
+                         <Link className="link" to={{pathname:`/product/${prod.id}`, state: {categoria:prod.categoria_id}}}>
                        <div className="imagem">
                            <img src={`http://localhost:3333/uploads/products/${prod.imagem}`}/>
                        </div>

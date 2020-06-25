@@ -1,32 +1,14 @@
-import React, {useState, useEffect} from "react"
+import React, {useState} from "react"
 import "./style.css"
-import api from "../../services/api"
 import { FiSearch } from "react-icons/fi"
-import {Link} from "react-router-dom"
 import Header from "../../components/header"
+import Products from "../../components/Products"
 
 const Categoria = (props) => {
-    const [products, setProducts] = useState([])
     const [search, setSearch] = useState("")
-    const [searchResult, setSearchResult] = useState("null")
-    
-
-    useEffect(() => {
-        api.get(`products?categoria=${props.match.params.id}`)
-        .then(response => {
-            setProducts(response.data)
-        })
-
-    }, [props.match.params.id])
-
 
     function ChangeSearch(event){
         setSearch(event.target.value)
-    }
-
-    function submitSearch(){
-     api.get(`products?pesquisa=${search}`)
-     .then(response => setSearchResult(response.data))
     }
 
     return (
@@ -34,43 +16,19 @@ const Categoria = (props) => {
             <Header />
             <div className="divSearch">
                     <input type="text" name="search" id="search" onChange={ChangeSearch} placeholder="Faça sua pesquisa" />
-                    <FiSearch onClick={submitSearch} id="iconSearch" />
+                    <FiSearch id="iconSearch" />
                 </div>
             <div id="contentProducts">
-            {searchResult.includes("null") ? (
-            <section>
-                <div className="cards">
-                   {products.map(prod => (
-                       <div id={prod.id} className="product">
-                            <Link to={`/product/${prod.id}`} className="link">
-                           <div className="imagem">
-                                <img src={`http://localhost:3333/uploads/products/${prod.imagem}`}/>
-                                       </div>
-                            <div className="preco">
-                            <p>{`R$${prod.preco}`}</p> 
-                            </div>
-                            </Link>
-                       </div>
-                   ))}
-                   </div>
-                   </section>
+            {search.length < 1 ? (
+           <Products
+           titulo={""}
+           query={`categoria=${props.match.params.id}`}
+           /> 
             ) : (
-                <section>
-                <div className="cards">
-                   {searchResult.map(prod => (
-                       <Link className="link" to={`product/${prod.id}`}>
-                        <div id={prod.id} className="product">
-                                <div className="imagem">
-                                <img src={`http://localhost:3333/uploads/products/${prod.imagem}`}/>
-                                 </div>
-                                <div className="preco">
-                                <p>{`R$${prod.preco}`}</p> 
-                                </div>
-                        </div>
-                       </Link>
-                   ))}
-                   </div>
-                   </section>
+                <Products
+                titulo={`"${search}"`}
+                query={`pesquisa=${search}&categoria=${props.match.params.id}`}
+                />
             )}
             </div>
         </main>

@@ -40,15 +40,33 @@
     margin-bottom: 50px;
 }
 
+#home #contentProducts .divContentProduct {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#home #contentProducts .seta {
+    font-weight: 600;
+    color: #307351;
+    margin-top: 20px;
+    font-size: 60px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+#home #contentProducts .seta:hover {
+    transform: scale(1.1);
+}
+
 #home #contentProducts section {
     width: 85%;
-    margin: 0 auto;
     margin-top: 50px;
     background-color: #F6F5F4;
 }
 
 #home #contentProducts h1 {
-    color: rgb(86, 87, 88);
+    color: #327a55;
     margin-bottom: 24px;
     font-size: 38px;
     margin-left: 16px;
@@ -104,8 +122,10 @@
     margin-left: 16px;
     font-size: 22px;
     font-weight: 600;
-    color:  rgb(86, 87, 88);
+    color: #307351;
 }
+
+
 
 #home .link {
     text-decoration: none;

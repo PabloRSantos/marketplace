@@ -7,6 +7,12 @@
     color: rgb(86, 87, 88);
 }
 
+#userProdutos .link {
+    text-decoration: none;
+    color: rgb(86, 87, 88);
+    display: flex;
+}
+
 #userProdutos .product {
     display: flex;
     justify-content: center;

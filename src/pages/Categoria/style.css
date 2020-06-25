@@ -10,6 +10,13 @@
     background-color: #F6F5F4;
 }
 
+#categoria #contentProducts h1 {
+    color: rgb(86, 87, 88);
+    margin-bottom: 24px;
+    font-size: 38px;
+    margin-left: 16px;
+}
+
 #categoria #contentProducts .cards {
     display: flex;
     flex-wrap: wrap;

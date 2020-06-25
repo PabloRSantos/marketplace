@@ -4,15 +4,18 @@ import Header from "../../components/header"
 import "./style.css"
 import Comentarios from "../../components/Comentarios"
 import Products from "../../components/Products"
+import {useLocation} from "react-router-dom"
 
 
 const Product = (props) => {
     const [product, setProduct] = useState({})
-
-
+    const location = useLocation()
+    
     useEffect(() => {
-        api.get(`products/${props.match.params.id}`)
-        .then(response => setProduct(response.data))
+        api.get(`products/${props.match.params.id}?categoria=${location.state.categoria}`)
+        .then(response => setProduct(response.data)
+        )
+
     }, [props.match.params.id])
 
     function addCarrinho(){
@@ -52,7 +55,7 @@ const Product = (props) => {
         <div id="productsSide">
             <Products 
             titulo={"Mais Produtos"}
-            query={"ordenar=preco"}/>
+            query={`categoria=${product.categoria_id}&limit=6`}/>
         </div>
 
         <Comentarios id={props.match.params.id}/>

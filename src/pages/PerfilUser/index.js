@@ -14,8 +14,6 @@ const Perfil = () => {
         .then(response => {
             const { nome } = response.data.user[0]
             setUser(nome)
-        }).catch(() => {
-            history.push("/")
         })
     })
 

@@ -1,23 +1,25 @@
 import React, {useEffect, useState} from "react"
 import "./style.css"
-import api from "../../services/api"
-import { FiSearch } from "react-icons/fi"
+import { FiSearch, FiChevronLeft, FiChevronRight } from "react-icons/fi"
 import Header from "../../components/header"
 import Product from "../../components/Products"
 
 const Home = () => {
     const [search, setSearch] = useState("")
-    const [searchResult, setSearchResult] = useState("null")
-
+    const [skip, setSkip] = useState(0)
     
     function ChangeSearch(event){
         setSearch(event.target.value)
-
     }
 
-    function submitSearch(){
-     api.get(`products?pesquisa=${search}`)
-     .then(response => setSearchResult(response.data))
+    function leftArrow(event){
+        if(skip < 8) return
+
+        setSkip(skip - 8)
+    }   
+    
+    function rightArrow (event){
+        setSkip(skip + 8)
     }
 
     return (
@@ -25,41 +27,59 @@ const Home = () => {
             <Header />
             <div className="divSearch">
                     <input type="text" name="search" id="search" onChange={ChangeSearch} placeholder="Faça sua pesquisa" />
-                    <FiSearch onClick={submitSearch} id="iconSearch" />
+                    <FiSearch id="iconSearch" />
                 </div>
             <div id="contentProducts">
 
-                {searchResult.includes("null") ? (
+                {search.length < 1 ? (
                     <>
+
+                        <div className="divContentProduct">
+                        <FiChevronLeft className="left seta"
+                        onClick={leftArrow}/>
+
                         <Product 
                         titulo={"Mais baratos"}
-                        query={"ordenar=preco"}/>
+                        query={`tipo=preco&ordenar=asc&skip=${skip}`}
+                        />
+
+                        <FiChevronRight className="right seta"
+                        onClick={rightArrow}/>
+                        </div>
                         
+
+                        <div className="divContentProduct">
+                        <FiChevronLeft className="left seta"
+                        onClick={leftArrow}/>
+
                         <Product 
                         titulo={"Mais Recentes"}
-                        query={"ordenar=id"}/>
-                        
+                        query={`tipo=id&ordenar=desc&skip=${skip}`}/>
+
+                        <FiChevronRight className="right seta"
+                        onClick={rightArrow}/>
+                        </div>
+
+                        <div className="divContentProduct">
+                        <FiChevronLeft className="left seta"
+                        onClick={leftArrow}/>
+
                         <Product 
-                        titulo={"Mais vendidos"}
-                        query={"ordenar=vendidos"}/>
+                        titulo="Mais vendidos"
+                        query={`tipo=vendidos&ordenar=asc&skip=${skip}`}/>
+
+                        <FiChevronRight className="right seta"
+                        onClick={rightArrow}/>
+                        </div>
+                       
             
                     </>
                 ) : (
                     <>
-                         <section>
-                            <div className="cards">
-                               {searchResult.map(prod => (
-                                <div id={prod.id} className="product">
-                                <div className="imagem">
-                                <img src={`http://localhost:3333/uploads/products/${prod.imagem}`}/>
-                                </div>
-                                <div className="preco">
-                                <p>{`R$${prod.preco}`}</p> 
-                                </div>
-                                </div>
-                               ))}
-                               </div>
-                               </section>
+                          <Product 
+                        titulo={`"${search}"`}
+                        query={`pesquisa=${search}`}
+                        />
                     </>
                 )}
         

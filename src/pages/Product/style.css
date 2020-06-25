@@ -17,6 +17,7 @@
     grid-area: img;
     padding: 30px;
     border-bottom: 2px solid #d3d3d2;
+    border-radius: 5px;
 }
 
 #mainProduct #imagem img {

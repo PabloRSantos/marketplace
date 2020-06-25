@@ -56,7 +56,7 @@ const UserProducts = () => {
                 ) : (
                         products.map(product => (
                             <div key={product.id} className="product">
-                                <Link to={`/product/${product.id}`}>
+                                <Link className="link" to={`/product/${product.id}`}>
                                 <p onClick={() => setClassAlert(product.id)} className="delete">X</p>
                             <div className="productPic">
                              <img src={`http://localhost:3333/uploads/products/${product.imagem}`}/>

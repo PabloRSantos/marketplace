@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import api from "../../../services/api"
 import './style.css'
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 import Header from "../../../components/header"
 import Confirm from "../../../components/Confirm"
 
@@ -9,28 +9,30 @@ const UserProducts = () => {
     const [products, setProducts] = useState([])
     const [deleteProducts, setDeleteProducts] = useState(0)
     const [classAlert, setClassAlert] = useState("hidden")
+    const [pages, setPages] = useState(0)
 
     useEffect(() => {
         const id = localStorage.getItem("LojaVirtualId")
         api.get(`products?user=${id}`)
             .then(response => {
-                setProducts(response.data)
+                setPages(response.data.pages)
+                setProducts(response.data.products)
             })
     }, [deleteProducts])
 
-    function Confirmar (boolean) {
+    function Confirmar(boolean) {
         if (boolean == 1) {
             deleteProduct(Number(classAlert))
         } else {
             setClassAlert("hidden")
         }
     }
-    
 
-    function deleteProduct (id){
-            const token = localStorage.getItem("LojaVirtual")
 
-           api.delete(`products/${id}`, {headers: {Authorization: token}})
+    function deleteProduct(id) {
+        const token = localStorage.getItem("LojaVirtual")
+
+        api.delete(`products/${id}`, { headers: { Authorization: token } })
             .then((response) => {
                 alert(response.data.message)
                 setDeleteProducts(deleteProducts + 1)
@@ -40,40 +42,40 @@ const UserProducts = () => {
     }
 
     return (
-        <> 
+        <>
             <Confirm
-            message={"Confirmar exclusão?"}
-            classAlert={classAlert}
-            confirm={() => Confirmar(1)}
-            cancel={() => Confirmar(0)}/>
-            
+                message={"Confirmar exclusão?"}
+                classAlert={classAlert}
+                confirm={() => Confirmar(1)}
+                cancel={() => Confirmar(0)} />
+
             <Header />
             <main id="userProdutos">
                 <div id="buttonUserProduto">
-                   <Link to="/user/addProduto">
-                   <button>Adicionar Produto</button>   </Link>
+                    <Link to="/user/addProduto">
+                        <button>Adicionar Produto</button>   </Link>
                 </div>
                 {products.length == 0 ? (
-                    <p>Nenhum produto encontrado</p>
+                    <p id="noProduct">Nenhum produto encontrado</p>
                 ) : (
                         products.map(product => (
                             <div key={product.id} className="product">
-                                 <p onClick={() => setClassAlert(product.id)} className="delete">X</p>
-                                <Link className="link" to={`/product/${product.id}`}>
-                            <div className="productPic">
-                             <img src={`http://localhost:3333/uploads/products/${product.imagem}`}/>
-                                       </div>
-                                <div className="productInfo">
-                                    <div className="productCima">
-                                        <h1>{product.nome}</h1>
-                                        <p>{product.descricao}</p>
+                                <p onClick={() => setClassAlert(product.id)} className="delete">X</p>
+                                <Link className="link" to={{ pathname: `/product/${product.id}`, state: { categoria: product.categoria_id }}} >
+                                    <div className="productPic">
+                                        <img src={`http://localhost:3333/uploads/products/${product.imagem}`} />
                                     </div>
-                                    <div className="productBaixo">
-                                        <p>Preço: {product.preco}</p>
-                                        <p>Unidades: {product.unidades}</p>
-                                        <p>Unidades vendidas: {product.vendidos}</p>
+                                    <div className="productInfo">
+                                        <div className="productCima">
+                                            <h1>{product.nome}</h1>
+                                            <p>{product.descricao}</p>
+                                        </div>
+                                        <div className="productBaixo">
+                                            <p>Preço: {product.preco}</p>
+                                            <p>Unidades: {product.unidades}</p>
+                                            <p>Unidades vendidas: {product.vendidos}</p>
+                                        </div>
                                     </div>
-                                </div>
                                 </Link>
                             </div>
                         ))

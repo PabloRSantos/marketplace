@@ -36,6 +36,12 @@
     color:rgb(86, 87, 88);
 }
 
+#categoria #noProduct {
+    color: rgb(86, 87, 88);
+    font-weight: 500;
+    margin: 0 auto;
+}
+
 #home #contentProducts {
     margin-bottom: 50px;
 }
@@ -49,7 +55,8 @@
 #home #contentProducts .seta {
     font-weight: 600;
     color: #307351;
-    margin-top: 20px;
+    min-width: 50px;
+    max-width: 50px;
     font-size: 60px;
     cursor: pointer;
     transition: .3s;
@@ -59,10 +66,20 @@
     transform: scale(1.1);
 }
 
+#home #contentProducts .noClick {
+    opacity: .5;
+    cursor: default;
+    transform: scale(1) !important;
+}
+
 #home #contentProducts section {
-    width: 85%;
+    width: 95%;
+    margin: 0 auto;
     margin-top: 50px;
     background-color: #F6F5F4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 #home #contentProducts h1 {
@@ -72,10 +89,17 @@
     margin-left: 16px;
 }
 
+#home #contentProducts .contentProduct {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+} 
+
 #home #contentProducts .cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
     border-radius: 5px;
     margin: 0 auto;
 }

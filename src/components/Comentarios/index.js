@@ -19,11 +19,12 @@ useEffect(() => {
 
 
 useEffect(() => {
-    if(!id){
+    if(!token){
         return setUserAtual("default.png")
     }
     api.get(`user/profile`, {headers: {Authorization: token}})
     .then(response => {
+        console.log(response.data)
         const { foto } = response.data.user[0]
         setUserAtual(foto)
     })

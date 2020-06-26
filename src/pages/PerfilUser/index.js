@@ -1,16 +1,15 @@
 import React, {useEffect, useState} from "react"
 import api from "../../services/api"
-import {Link, useHistory} from "react-router-dom"
+import {Link} from "react-router-dom"
 import "./style.css"
 import Header from "../../components/header"
 
 const Perfil = () => {
-    const history = useHistory()
     const [user, setUser] = useState("")
-    const id = localStorage.getItem("LojaVirtualId")
+    const token = localStorage.getItem("LojaVirtual")
 
     useEffect(() => {
-        api.get(`user/profile/${id}`)
+        api.get(`user/profile`, {headers: {Authorization: token}})
         .then(response => {
             const { nome } = response.data.user[0]
             setUser(nome)

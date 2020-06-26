@@ -5,7 +5,7 @@ import api from "../../services/api"
 const Comentarios = (props) => {
     const [comentarios, setComentarios] = useState([])
     const [userAtual, setUserAtual] = useState("")
-    const id = localStorage.getItem("LojaVirtualId")
+    const token = localStorage.getItem("LojaVirtual")
     const [formData, setFormData] = useState()
     
 
@@ -22,7 +22,7 @@ useEffect(() => {
     if(!id){
         return setUserAtual("default.png")
     }
-    api.get(`user/profile/${id}`)
+    api.get(`user/profile`, {headers: {Authorization: token}})
     .then(response => {
         const { foto } = response.data.user[0]
         setUserAtual(foto)
@@ -38,14 +38,13 @@ function changeComentario(event){
 function submitComentario(event){
     event.preventDefault()
     
-    if(!localStorage.getItem("LojaVirtualId")) {
+    if(!token) {
         return alert("Você precisa estar logado")
     }
 
-    formData.user_id = localStorage.getItem("LojaVirtualId")
     formData.product_id = props.id
 
-    api.post("comentario", formData)
+    api.post("comentario", formData, {headers: {Authorization: token}})
     .then(() => {
         setComentarios([false])
     })

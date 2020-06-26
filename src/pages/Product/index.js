@@ -20,9 +20,9 @@ const Product = (props) => {
 
     function addCarrinho(){
         const product_id = product.id
-        const user_id = localStorage.getItem("LojaVirtualId")
+        const token = localStorage.getItem("LojaVirtual")
         
-        api.post("carrinho", {product_id, user_id})
+        api.post("carrinho", {product_id}, {headers: {Authorization: token}})
         .then(response => console.log(response.data))
     }
 

@@ -36,6 +36,7 @@ const AddProduto = () => {
     event.preventDefault()
 
     const id = localStorage.getItem("LojaVirtualId")
+    const token = localStorage.getItem("LojaVirtual")
 
     const {nome, preco, descricao, cores, unidades} = formData
 
@@ -56,7 +57,7 @@ const AddProduto = () => {
     }
 
 
-    api.post("products", data)
+    api.post("products", data, {headers: {Authorization: token}})
     .then(response => {
         if(response.data.sucess){
             setClassSucess("show")

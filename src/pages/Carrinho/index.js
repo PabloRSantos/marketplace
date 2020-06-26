@@ -11,7 +11,7 @@ const Carrinho = () => {
 
     useEffect(() => {
         const token = localStorage.getItem("LojaVirtual")
-        api.get(`carrinho`, {headers: {autorizacao: token}})
+        api.get(`carrinho`, {headers: {Authorization: token}})
         .then(async response => {
             setProducts(response.data)
             
@@ -26,9 +26,9 @@ const Carrinho = () => {
 
     function removeProduct (event){
         const product_id = event.target.id
-        const user_id = localStorage.getItem("LojaVirtualId")
+        const token = localStorage.getItem("LojaVirtual")
 
-        api.delete(`carrinho?user_id=${user_id}&product_id=${product_id}`)
+        api.delete(`carrinho?product_id=${product_id}`, {headers: {Authorization: token}})
         .then(response => {
             console.log(response.data)
             setProducts([false])

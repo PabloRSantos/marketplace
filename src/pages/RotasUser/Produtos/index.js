@@ -28,7 +28,9 @@ const UserProducts = () => {
     
 
     function deleteProduct (id){
-           api.delete(`products/${id}`)
+            const token = localStorage.getItem("LojaVirtual")
+
+           api.delete(`products/${id}`, {headers: {Authorization: token}})
             .then((response) => {
                 alert(response.data.message)
                 setDeleteProducts(deleteProducts + 1)
@@ -56,8 +58,8 @@ const UserProducts = () => {
                 ) : (
                         products.map(product => (
                             <div key={product.id} className="product">
+                                 <p onClick={() => setClassAlert(product.id)} className="delete">X</p>
                                 <Link className="link" to={`/product/${product.id}`}>
-                                <p onClick={() => setClassAlert(product.id)} className="delete">X</p>
                             <div className="productPic">
                              <img src={`http://localhost:3333/uploads/products/${product.imagem}`}/>
                                        </div>

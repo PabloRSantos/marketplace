@@ -34,7 +34,6 @@
 .imgUser {
     border-radius: 50%;
     min-width: 75px;
-    min-height: 75px;
     width: 75px;
     height: 75px;
 }
@@ -111,4 +110,41 @@
 
 .comentario p {
     color: rgb(86, 87, 88);
+}
+
+@media (max-width: 600px){
+    #contentComentarios input {
+        width: 90%;
+        margin-left: 8px;
+        font-size: 12px;
+    }
+    
+    #contentComentarios button {
+        font-size: 16px;
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 500px){
+    .imgUser {
+        min-width: 50px;
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 450px){
+    #contentComentarios form {
+        height: 35px;
+    }
+    
+    #contentComentarios input {
+        width: 95%;
+    }
+    
+    #contentComentarios button {
+        font-size: 10px;
+        padding: 0 5px;
+    }
+
 }

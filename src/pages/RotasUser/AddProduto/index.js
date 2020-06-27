@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react"
 import api from "../../../services/api"
 import "./style.css"
-import {useHistory} from "react-router-dom"
 import DropZone from "../../../components/Dropzone"
 import Header from "../../../components/header"
 import Sucess from "../../../components/Sucess"
@@ -10,9 +9,8 @@ const AddProduto = () => {
     const [formData, setFormData] = useState([])
     const [selected, setSelected] = useState([])
     const [categorias, setCategorias] = useState([])
-    const history = useHistory()
     const [selectedFile, setSelectedFile] = useState()
-    const [classSucess, setClassSucess] = useState("hidden")
+    const [classSucess, setClassSucess] = useState("hiddenSucess")
 
     useEffect(() => {
         api.get("categorias")
@@ -60,7 +58,7 @@ const AddProduto = () => {
     api.post("products", data, {headers: {Authorization: token}})
     .then(response => {
         if(response.data.sucess){
-            setClassSucess("show")
+            setClassSucess("showSucess")
         }
         else {
             alert("Erro ao cadastrar, tente novamente")
@@ -75,7 +73,6 @@ return (
      <Sucess
      message={"Postado com sucesso!"}
      classSucess={classSucess}
-     confirm={() => history.push("/user/produtos")}
      />
 
      <Header />
@@ -115,6 +112,7 @@ return (
                 <label htmlFor="categorias">Categoria:</label>
 
                 <select onChange={handleSelect} value={selected} id="categorias" name="categorias">
+                    <option>Clique aqui</option>
                 {categorias.map(categoria => (
                     <option key={categoria.nome} value={categoria.id}>{categoria.nome}</option>
                 ))}

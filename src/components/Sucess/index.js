@@ -1,18 +1,25 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
 import "./style.css"
+import {FiCheckCircle} from "react-icons/fi"
+
 
 const Alert = (props) => {
+    const [classSucess2, setClass] = useState("")
 
-    
+
+    useEffect(() =>{
+        setClass(props.classSucess)
+        setTimeout(function(){
+            setClass("hiddenSucess")
+        }, 3000)
+    }, [props.classSucess])
 
     return (
-        <div className={props.classSucess} id="sucessBg">
-            <div id="sucess">
-                <div></div>
-                <h2>{props.message}</h2>
-                    <button onClick={props.confirm}>Ok</button>
+        
+            <div className={`${classSucess2} sucess`}>
+                <FiCheckCircle className="icon"/>
+                <p>{props.message}</p>
             </div>
-        </div>
     )
 }
 export default Alert

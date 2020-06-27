@@ -41,3 +41,12 @@
     color: white;
 }
 
+@media(max-width: 500px){
+    #PerfilUser .link {
+        font-size: 18px;
+    }
+
+    #user h2{
+        font-size: 20px;
+    }
+}

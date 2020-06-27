@@ -115,3 +115,49 @@
     filter: brightness(.90);
 }
 
+@media (max-width: 950px) {
+    #AddProduto {
+        width: 90%;
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 500px) {
+    #AddProduto textarea {
+        height: 150px;
+    }
+
+    #AddProduto .campoGrupo {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 8px;
+        width: 100%;
+    }
+
+    #AddProduto .campo {
+        margin-top: 8px;
+    }
+
+    #AddProduto .campoGrupo .tag  {
+        margin-left: 0px;
+        margin-top: 8px;
+        width: 100%;
+    }
+    
+    #AddProduto .campoGrupo .unidade {
+       margin-right: 0px;
+       width: 100%;
+    }
+   
+    #AddProduto .campoGrupo .preco {
+        margin-left: 0px;
+        margin-top: 8px;
+        width: 100%;
+    }
+   
+    #AddProduto .campoGrupo .categoria {
+       margin-right: 0px;
+       width: 100%;
+    }
+
+}

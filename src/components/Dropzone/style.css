@@ -23,7 +23,7 @@
     height: calc(100% - 60px);
     border-radius: 10px;
     border: 1px dashed #307351;
-  
+    text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -36,4 +36,34 @@
     width: 24px;
     height: 24px;
     margin-bottom: 8px;
+  }
+
+  @media (max-width: 1150px) {
+    .dropzone {
+      height: 300px;
+    }
+  }
+
+  @media (max-width: 530px) {
+    .dropzone {
+      height: 200px;
+    }
+
+    .dropzone p {
+      width: 90%;
+      height: 90%;
+      border: 1px dashed #307351;
+    }
+  }
+
+  @media (max-width: 350px) {
+    .dropzone {
+      height: 150px;
+    }
+  }
+
+  @media (max-width: 300px) {
+    .dropzone {
+      height: 100px;
+    }
   }

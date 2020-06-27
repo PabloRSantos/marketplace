@@ -8,50 +8,47 @@ const Products = (props) => {
     const [prods, setProds] = useState([])
     const [pages, setPages] = useState(0)
     const [pageAtual, setPageAtual] = useState(1)
-    const [noClick, setNoClick] = useState("")
+    const [noClickLeft, setNoClickLeft] = useState("noClick")
+    const [noClickRight, setNoClickRight] = useState("")
 
     useEffect(() => {
-
-
-
         api.get(`products?${props.query}&page=${pageAtual}`)
         .then(response => {
             setProds(response.data.products)
             setPages(response.data.pages)
+
+            pageAtual >= response.data.pages && setNoClickRight("noClick")
         })
         .catch(() => alert("Erro na conexao do servidor"))
     }, [props.query, pageAtual])
 
-
     
     function leftArrow(){
-       if(pageAtual <= 0) return setNoClick("noClickLeft")
+       if(pageAtual <= 1) return 
 
-       setNoClick("")
+       setNoClickRight("")
        setPageAtual(pageAtual - 1)
+
+       if(pageAtual - 1 <= 1) setNoClickLeft("noClick")
     }   
     
     function rightArrow (){
         if(pageAtual >= pages) {
-            return setNoClick("noClickRight")
+            return setNoClickRight("noClick")
         }
 
-           setNoClick("")
+            setNoClickLeft("")
            setPageAtual(pageAtual + 1) 
 
-           
+        if(pageAtual + 1 >= pages) return setNoClickRight("noClick")
 
+        setNoClickRight("")
     }
 
 
     return (
-        prods.length == 0 ? (
             <section>
-            <p id="noProduct">Nenhum produto encontrado</p>
-            </section>
-        ) : (
-            <section>
-            <FiChevronLeft className={` seta ${noClick}`}
+            <FiChevronLeft className={` seta left ${noClickLeft}`}
                      onClick={leftArrow}/>
      <div className="contentProduct">
      <h1>{props.titulo}</h1>
@@ -70,12 +67,10 @@ const Products = (props) => {
             ))}
             </div>
              </div>
-             <FiChevronRight className={` seta ${noClick}`}
+             <FiChevronRight className={` seta right ${noClickRight}`}
                      onClick={rightArrow}/>
             </section>
         )
-    
-    )
 }
 
 export default Products

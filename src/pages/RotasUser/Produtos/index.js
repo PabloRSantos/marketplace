@@ -4,11 +4,13 @@ import './style.css'
 import { Link } from "react-router-dom"
 import Header from "../../../components/header"
 import Confirm from "../../../components/Confirm"
+import Sucess from "../../../components/Sucess"
 
 const UserProducts = () => {
     const [products, setProducts] = useState([])
     const [deleteProducts, setDeleteProducts] = useState(0)
     const [classAlert, setClassAlert] = useState("hidden")
+    const [classSucess, setClassSucess] = useState("hiddenSucess")
     const [pages, setPages] = useState(0)
 
     useEffect(() => {
@@ -33,10 +35,10 @@ const UserProducts = () => {
         const token = localStorage.getItem("LojaVirtual")
 
         api.delete(`products/${id}`, { headers: { Authorization: token } })
-            .then((response) => {
-                alert(response.data.message)
+            .then(() => {
                 setDeleteProducts(deleteProducts + 1)
                 setClassAlert("hidden")
+                setClassSucess("showSucess")
             })
             .catch(() => alert("Erro ao deletar, tente novamente"))
     }
@@ -49,6 +51,11 @@ const UserProducts = () => {
                 confirm={() => Confirmar(1)}
                 cancel={() => Confirmar(0)} />
 
+                <Sucess
+                message={"Excluido com sucesso!"}
+                classSucess={classSucess}
+                />    
+
             <Header />
             <main id="userProdutos">
                 <div id="buttonUserProduto">
@@ -60,11 +67,15 @@ const UserProducts = () => {
                 ) : (
                         products.map(product => (
                             <div key={product.id} className="product">
+
                                 <p onClick={() => setClassAlert(product.id)} className="delete">X</p>
+
                                 <Link className="link" to={{ pathname: `/product/${product.id}`, state: { categoria: product.categoria_id }}} >
+
                                     <div className="productPic">
                                         <img src={`http://localhost:3333/uploads/products/${product.imagem}`} />
                                     </div>
+
                                     <div className="productInfo">
                                         <div className="productCima">
                                             <h1>{product.nome}</h1>
@@ -72,8 +83,10 @@ const UserProducts = () => {
                                         </div>
                                         <div className="productBaixo">
                                             <p>Preço: {product.preco}</p>
-                                            <p>Unidades: {product.unidades}</p>
+
                                             <p>Unidades vendidas: {product.vendidos}</p>
+
+                                            <p>Unidades: {product.unidades}</p>
                                         </div>
                                     </div>
                                 </Link>

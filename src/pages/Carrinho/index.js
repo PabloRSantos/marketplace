@@ -7,10 +7,10 @@ import {Link} from "react-router-dom"
 const Carrinho = () => {
     const [products, setProducts] = useState([])
     const [totalProducts, setTotalProducts] = useState(0)
+    const token = localStorage.getItem("LojaVirtual")
 
 
     useEffect(() => {
-        const token = localStorage.getItem("LojaVirtual")
         api.get(`carrinho`, {headers: {Authorization: token}})
         .then(async response => {
             setProducts(response.data)

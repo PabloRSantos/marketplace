@@ -3,9 +3,10 @@ import api from "../../../services/api"
 import { useHistory } from "react-router-dom"
 import "./style.css"
 import Header from "../../../components/header"
+import Sucess from "../../../components/Sucess"
 
 const UserDados = () => {
-const id = localStorage.getItem("LojaVirtualId")
+const token = localStorage.getItem("LojaVirtual")
 const [dadosUser, setDadosUser] = useState({})
 const [classProfile, setClassProfile] = useState("hidsssden")
 const [newFoto, setNewFoto] = useState("")
@@ -16,7 +17,7 @@ const history = useHistory()
 
 
 useEffect(() => {
-        api.get(`user/profile/${id}`)
+        api.get(`user/profile`, {headers: {Authorization: token}})
         .then(response => {
             if(response.data.error){
                 alert(response.data.error)

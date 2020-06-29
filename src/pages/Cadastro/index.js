@@ -65,7 +65,7 @@ const Cadastro = () => {
                     </div>
                     <button>Cadastrar</button>
                 </form>
-            </div>
+                </div>
         </main>
     )
 }

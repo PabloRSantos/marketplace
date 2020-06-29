@@ -1,18 +1,24 @@
 #cadastro {
     width: 100%;
+    max-width: 100%;
     color: rgb(86, 87, 88);
+    overflow-x: hidden;
 }
 
 #cadastro #form {
-    width: 50%;
+    width: 60%;
     margin: 0 auto;
     margin-top: 50px;
     border-radius: 8px;
     background-color: white;
-    display: grid;
-    justify-content: center;
-    align-items: center;
     padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#cadastro form {
+    width: 80%;
 }
 
 #cadastro input {
@@ -20,7 +26,7 @@
     border-radius: 5px;
     background-color: #F6F5F4;
     
-    width: 400px;
+    width: 100%;
     color:  rgb(86, 87, 88);
     font-size: 17px;
     padding: 10px;
@@ -37,6 +43,7 @@
 
 #cadastro .campo {
     margin: 30px 0;
+    width: 100%;
 }
 
 #cadastro button {
@@ -56,4 +63,17 @@
 
 #cadastro button:hover {
     filter: brightness(.92);
+}
+
+
+@media (max-width: 700px) {
+    #cadastro #form {
+        width: 80%;
+    }
+}
+
+@media (max-width: 500px) {
+    #cadastro #form {
+        width: 90%;
+    }
 }

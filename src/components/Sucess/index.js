@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react"
 import "./style.css"
-import {FiCheckCircle} from "react-icons/fi"
+import {FiCheckCircle, FiX} from "react-icons/fi"
 
 
 const Alert = (props) => {
@@ -11,15 +11,27 @@ const Alert = (props) => {
         setClass(props.classSucess)
         setTimeout(function(){
             setClass("hiddenSucess")
-        }, 3000)
+        }, 5000)
     }, [props.classSucess])
 
     return (
-        
-            <div className={`${classSucess2} sucess`}>
-                <FiCheckCircle className="icon"/>
-                <p>{props.message}</p>
-            </div>
+        <>
+            {props.type.includes("sucess")? (
+
+             <div className={`${classSucess2} sucess`}>
+                    <FiCheckCircle className="icon"/>
+                     <p>{props.message}</p>
+             </div>
+
+            ) : (
+
+                <div className={`${classSucess2} failed`}>
+                    <FiX className="icon"/>
+                    <p>{props.message}</p>
+                </div>
+
+            )}
+        </>
     )
 }
 export default Alert

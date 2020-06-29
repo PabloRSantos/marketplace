@@ -2,17 +2,6 @@
     width: 4px;
   }
 
-  body::-webkit-scrollbar {
-    width: 6px;
-  }
-
-
-::-webkit-scrollbar-thumb {
-    background-color: #28945c;
-    border-radius: 5px;
-    height: 10px;
-}
-
 #contentComentarios {
     grid-area: comentarios;
     padding: 24px 30px 30px 30px;
@@ -88,6 +77,10 @@
 #contentComentarios h2 {
     margin-bottom: 32px;
     font-size: 40px;
+    color: rgb(86, 87, 88);
+}
+
+#contentComentarios h3 {
     color: rgb(86, 87, 88);
 }
 

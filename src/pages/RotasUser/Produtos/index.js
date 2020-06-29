@@ -11,19 +11,17 @@ const UserProducts = () => {
     const [deleteProducts, setDeleteProducts] = useState(0)
     const [classAlert, setClassAlert] = useState("hidden")
     const [classSucess, setClassSucess] = useState("hiddenSucess")
-    const [pages, setPages] = useState(0)
 
     useEffect(() => {
         const id = localStorage.getItem("LojaVirtualId")
         api.get(`products?user=${id}`)
             .then(response => {
-                setPages(response.data.pages)
                 setProducts(response.data.products)
             })
     }, [deleteProducts])
 
     function Confirmar(boolean) {
-        if (boolean == 1) {
+        if (boolean === 1) {
             deleteProduct(Number(classAlert))
         } else {
             setClassAlert("hidden")
@@ -62,7 +60,7 @@ const UserProducts = () => {
                     <Link to="/user/addProduto">
                         <button>Adicionar Produto</button>   </Link>
                 </div>
-                {products.length == 0 ? (
+                {products.length === 0 ? (
                     <p id="noProduct">Nenhum produto encontrado</p>
                 ) : (
                         products.map(product => (

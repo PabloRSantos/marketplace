@@ -3,7 +3,7 @@
     width: 100%;
 }
 
-#categoria #noProduct {
+#categoria .noProduct {
     color: rgb(86, 87, 88);
     font-weight: 500;
     margin: 0 auto;
@@ -45,7 +45,7 @@
     height: 100px;
     display: block;
     padding: 0;
-    width: calc(25% - 32px);
+    width: 250px;
     height: 314px;
     border-radius: 5px;
     margin: 16px 16px;

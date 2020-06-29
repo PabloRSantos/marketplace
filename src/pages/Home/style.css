@@ -36,7 +36,12 @@
     color:rgb(86, 87, 88);
 }
 
-#categoria #noProduct {
+#home {
+    width: 100%;
+    max-width: 100%;
+}
+
+#home .noProduct {
     color: rgb(86, 87, 88);
     font-weight: 500;
     margin: 0 auto;
@@ -54,6 +59,7 @@
 
 #home #contentProducts .seta {
     font-weight: 600;
+    margin-top: 40px;
     color: #307351;
     min-width: 50px;
     max-width: 50px;
@@ -78,7 +84,7 @@
     margin-top: 50px;
     background-color: #F6F5F4;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
@@ -86,14 +92,13 @@
     color: #327a55;
     margin-bottom: 24px;
     font-size: 38px;
-    margin-left: 16px;
+    margin-left: 25px;
 }
 
 #home #contentProducts .contentProduct {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 0 auto;
 } 
 
 #home #contentProducts .cards {
@@ -105,7 +110,6 @@
 }
 
 #home #contentProducts .product {
-    height: 100px;
     display: block;
     padding: 0;
     width: 250px;
@@ -155,3 +159,80 @@
     text-decoration: none;
 }
 
+
+@media (max-width: 1100px) {
+    #home #contentProducts .product {
+        width: calc(33% - 16px);
+        margin: 8px 8px;
+    }
+}
+
+@media (max-width: 950px) {
+    #home #contentProducts .product {
+        height: 250px;
+    }
+}
+
+@media (max-width: 750px) {
+    #home #contentProducts .product {
+        height: 200px;
+    }
+
+    #home #contentProducts h1 {
+        text-align: center;
+        margin: 16px auto 12px;
+    }
+}
+
+@media (max-width: 600px) {
+    #home #contentProducts .product {
+        height: 150px;
+    }
+
+    #home #contentProducts .preco p {
+        margin-left: 8px;
+        font-size: 16px;
+    }
+    
+    #home #contentProducts section {
+        margin-top: 16px;
+    }
+    
+}
+
+@media (max-width: 500px) {
+    #home #contentProducts .product {
+        width: calc(50% - 16px);
+    }
+    #home #contentProducts section {
+        margin-top: 6px;
+    }
+}
+
+
+@media (max-width: 400px) {
+    #home #contentProducts .product {
+        height: 140px;
+    }
+
+    #home #contentProducts h1 {
+        font-size: 30px;
+    }
+
+    #home #contentProducts .preco p {
+        margin-left: 4px;
+        font-size: 14px;
+    }
+}
+@media (max-width: 350px) {
+    #home #contentProducts .product {
+        height: 120px;
+    }
+
+    @media (max-width: 300px) {
+        #home #contentProducts .product {
+            width: 100%;
+        }
+    }
+    
+}

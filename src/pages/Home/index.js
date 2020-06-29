@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import "./style.css"
 import { FiSearch} from "react-icons/fi"
 import Header from "../../components/header"
@@ -6,10 +6,25 @@ import Product from "../../components/Products"
 
 const Home = () => {
     const [search, setSearch] = useState("")
+    const [limit, setLimit] = useState(8)
     
     function ChangeSearch(event){
         setSearch(event.target.value)
     }
+
+    useEffect(() => {
+        if(window.screen.width > 1550) {
+            setLimit(10)
+        }
+
+        if(window.screen.width > 1900) {
+            setLimit(12)
+        }
+
+        if(window.screen.width > 2200) {
+            setLimit(16)
+        }
+    }, [])
 
     return (
         <main id="home">
@@ -25,7 +40,7 @@ const Home = () => {
 
                         <Product 
                         titulo={"Mais baratos"}
-                        query={`tipo=preco&ordenar=asc`}
+                        query={`tipo=preco&ordenar=asc&limit=${limit}`}
                         />                        
 
                         <Product 

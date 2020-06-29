@@ -7,4 +7,15 @@
 
 body {
     background-color: #F6F5F4;
+    overflow-x: hidden; 
+}
+
+body::-webkit-scrollbar {
+    width: 6px;
+  }
+
+
+::-webkit-scrollbar-thumb {
+    background-color: #28945c;
+    border-radius: 5px;
 }

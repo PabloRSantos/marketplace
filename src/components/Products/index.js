@@ -48,6 +48,8 @@ const Products = (props) => {
 
     return (
             <section>
+                  {prods.length > 0 ? (
+                      <>
             <FiChevronLeft className={` seta left ${noClickLeft}`}
                      onClick={leftArrow}/>
      <div className="contentProduct">
@@ -69,7 +71,11 @@ const Products = (props) => {
              </div>
              <FiChevronRight className={` seta right ${noClickRight}`}
                      onClick={rightArrow}/>
-            </section>
+                     </>
+                ): (
+                    <h3 className="noProduct">Nenhum produto encontrado</h3>
+                )}
+        </section>
         )
 }
 

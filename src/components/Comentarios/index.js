@@ -1,12 +1,16 @@
 import React, {useEffect, useState} from "react"
 import "./style.css"
 import api from "../../services/api"
+import Sucess from "../Sucess"
 
 const Comentarios = (props) => {
     const [comentarios, setComentarios] = useState([])
     const [userAtual, setUserAtual] = useState("")
     const token = localStorage.getItem("LojaVirtual")
     const [formData, setFormData] = useState()
+    const [classSucess, setClassSucess] = useState("hiddenSucess")
+    const [message, setMessage] = useState(" ")
+    const [typeSucess, setTypeSucess] = useState("")
     
 
 useEffect(() => {
@@ -24,7 +28,6 @@ useEffect(() => {
     }
     api.get(`user/profile`, {headers: {Authorization: token}})
     .then(response => {
-        console.log(response.data)
         const { foto } = response.data.user[0]
         setUserAtual(foto)
     })
@@ -39,24 +42,41 @@ function changeComentario(event){
 function submitComentario(event){
     event.preventDefault()
     
-    if(!token) {
-        return alert("Você precisa estar logado")
+    if(!token || !formData) {
+        setMessage("Você precisa estar logado")
+        setTypeSucess("failed")
+        setClassSucess("showSucess")
+        return
     }
 
     formData.product_id = props.id
 
     api.post("comentario", formData, {headers: {Authorization: token}})
     .then(() => {
+        setClassSucess("showSucess")
+        setMessage("Comentado com sucesso!")
+        setTypeSucess("sucess")
+
         setComentarios([false])
     })
 }
 
     return (
+        <>
+            
+         <Sucess
+         message={message}
+         classSucess={classSucess}
+         type={typeSucess}
+        />
+
         <section id="contentComentarios">
                <h2>Ultimos Comentários</h2>
             <div id="comentarios">
-             
-                {comentarios.map(comentario => (
+                {comentarios.length == 0 ? (
+                    <h3>Nenhum comentário</h3>
+                ): (
+                comentarios.map(comentario => (
                       <div className="comentario">
                       <div className="imgUser">
                           <img src={`http://localhost:3333/uploads/user/${comentario.foto}`} alt="Foto de perfil"/>
@@ -66,7 +86,9 @@ function submitComentario(event){
                            <p>{comentario.conteudo}</p>
                       </div>
                   </div>
-                ))}
+                ))
+
+                )}
                </div>
 
 
@@ -81,6 +103,7 @@ function submitComentario(event){
             </div>
 
         </section>
+        </>
     )
 
 }

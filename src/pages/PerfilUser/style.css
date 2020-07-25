@@ -1,0 +1,52 @@
+#PerfilUser {
+    width: 100%;
+    color: rgb(86, 87, 88);
+}
+
+#infosPerfil {
+    background-color: white;
+    margin: 50px auto;
+    width: 600px;
+    max-width: 80%;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.096);
+}
+
+#user {
+    border-bottom: 2px solid #F6F5F4;
+    padding: 5px 5px 12px 5px;
+    text-align: center;
+    border-radius: 3px;
+}
+
+#navUser {
+    display: block;
+}
+
+#PerfilUser .link {
+    color: rgb(86, 87, 88);
+    text-decoration: none;
+    display: block;
+    margin: 20px 0;
+    padding: 20px 10px;
+    font-weight: 500;
+    font-size: 22px;
+    transition: all .3s;
+    border-radius: 5px;
+}
+
+#PerfilUser .link:hover {
+    background-color: #307351;
+    color: white;
+}
+
+@media(max-width: 500px){
+    #PerfilUser .link {
+        font-size: 18px;
+    }
+
+    #user h2{
+        font-size: 20px;
+    }
+}

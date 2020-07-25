@@ -1,0 +1,143 @@
+#comentarios::-webkit-scrollbar {
+    width: 4px;
+  }
+
+#contentComentarios {
+    grid-area: comentarios;
+    padding: 24px 30px 30px 30px;
+}
+
+#contentComentarios #comentarios{
+    max-height: 700px;
+    overflow-y: scroll;
+    scrollbar-color: black;
+    scrollbar-width: 50px;
+}
+
+#contentComentarios #newComentario {
+    display: flex;
+    align-items: center;
+    margin-top: 42px;
+}
+
+.imgUser {
+    border-radius: 50%;
+    min-width: 75px;
+    width: 75px;
+    height: 75px;
+}
+
+.imgUser img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#contentComentarios form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+}
+
+#contentComentarios input {
+    height: 100%;
+    width: 80%;
+    margin-left: 16px;
+    font-size: 16px;
+    outline: none;
+    padding: 5px;
+    border: 2px solid  #28945c;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+#contentComentarios button {
+    background-color: #28945c;
+    color: white;
+    border: none;
+    outline: none;
+    padding: 0 16px;
+    height: 100%;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    font-weight: 500;
+    font-size: 20px;
+    
+    cursor: pointer;
+    transition: .3s;
+}
+
+#contentComentarios button:hover {
+    filter: brightness(.95)
+}
+
+#contentComentarios h2 {
+    margin-bottom: 32px;
+    font-size: 40px;
+    color: rgb(86, 87, 88);
+}
+
+#contentComentarios h3 {
+    color: rgb(86, 87, 88);
+}
+
+#contentComentarios .comentario {
+    display: flex;
+    align-items: flex-start;
+}
+
+#contentComentarios .comentario + .comentario {
+    margin-top: 24px;
+}
+
+.comentarioUser {
+    margin-left: 16px;
+}
+
+.comentario h3 {
+    color: rgb(42, 42, 43);
+}
+
+.comentario p {
+    color: rgb(86, 87, 88);
+}
+
+@media (max-width: 600px){
+    #contentComentarios input {
+        width: 90%;
+        margin-left: 8px;
+        font-size: 12px;
+    }
+    
+    #contentComentarios button {
+        font-size: 16px;
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 500px){
+    .imgUser {
+        min-width: 50px;
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 450px){
+    #contentComentarios form {
+        height: 35px;
+    }
+    
+    #contentComentarios input {
+        width: 95%;
+    }
+    
+    #contentComentarios button {
+        font-size: 10px;
+        padding: 0 5px;
+    }
+
+}

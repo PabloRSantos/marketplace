@@ -95,5 +95,3 @@ exports.profilePic = async(req, res) => {
         return res.json({sucess: "Salvo com sucesso"})
     })
 }
-
-

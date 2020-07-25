@@ -2,7 +2,7 @@
     return knex.schema.createTable("users", table => {
         table.increments("id").primary()
         table.string("foto").notNullable().defaultTo("default.png")
-        table.string("nome").notNullable().unique()
+        table.string("user").notNullable().unique()
         table.string("senha").notNullable()
         table.string("email").notNullable().unique()
     })

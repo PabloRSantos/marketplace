@@ -6,11 +6,13 @@ import { Link } from "react-router-dom"
 import api from "../../services/api"
 import {FaShoppingCart} from "react-icons/fa"
 import {FiMenu, FiChevronDown} from "react-icons/fi"
+import {useAuth} from "../../contexts/auth"
 
 const Header = () => {
     const [categorias, setCategorias] = useState([])
     const [menuResponsivo, setMenuResponsivo] = useState("none")
     const [responsiveCategoria, setResponsiveCategoria] = useState("none")
+    const {SignOut} = useAuth()
 
     useEffect(() => {
         api.get("categorias")
@@ -19,6 +21,9 @@ const Header = () => {
             })
     }, [])
 
+    function Logout(){
+        SignOut()
+    }
 
     function responsiveMenu(){
         menuResponsivo.includes("none") ? setMenuResponsivo("flex") : setMenuResponsivo("none")
@@ -46,7 +51,9 @@ const Header = () => {
                             <ul>
                                 <Link className="linkHeader" to="/user/perfil"><li>Meu Perfil</li></Link>
 
-                                <Link className="linkHeader" to="chat"><li>Chat</li></Link>
+                                <Link className="linkHeader" to="/user/chat"><li>Chat</li></Link>
+
+                                <li className="linkHeader" onClick={Logout}>Sair</li>
 
                                 <Link className="linkHeader" to="/carrinho"><li><FaShoppingCart/></li></Link>
 

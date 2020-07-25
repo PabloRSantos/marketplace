@@ -91,13 +91,16 @@ const path = require("path")
             const page = req.query.page
             const limit = req.query.limit || 10
 
+
             const skip = (page - 1) * limit
             let products = await knex("products")
             .join("relacionamento", "products.id", "=", "relacionamento.product_id")
-            .where("user_id", req.query.user)
-            .orderBy("id", "desc")
+            .where("products.user_id", req.query.user)
+            .orderBy("products.id", "desc")
             .offset(skip)
             .limit(limit)
+
+            console.log(products)
 
             let count = await knex("products").where("user_id", req.query.user).count("id" , {as: 'count'})
 
@@ -126,7 +129,6 @@ const path = require("path")
             unidades,
             modelo,
             categorias,
-            user_id
         } = req.body
 
         const infos = `${nome} ${descricao} ${modelo}`
@@ -141,13 +143,13 @@ const path = require("path")
             unidades,
             modelo,
             tags,
-            user_id,
+            user_id: req.userId,
             imagem: req.file.filename
         }
         
         const trx = await knex.transaction() //se 1 insert n da certo, ele cancela o outro
 
-        const idsProducts = await trx("products").insert(product)
+        const idsProducts = await trx("products").insert(product).returning("id")
 
         const product_id = idsProducts[0]
 
@@ -183,12 +185,16 @@ const path = require("path")
 
     exports.show = async(req, res) => {
         const id = req.params.id
+ 
 
         const product = await knex("products").first()
         .join("relacionamento", "products.id", "=", "relacionamento.product_id")
+        .join("users", "users.id", "=", "products.user_id")
         .where("relacionamento.categoria_id", req.query.categoria)
         .where("products.id", id)
         .select("*")
+
+        console.log(product)
 
         return res.json(product)
     }

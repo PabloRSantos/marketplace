@@ -35,7 +35,6 @@ const AddProduto = () => {
     function submitForm(event){
     event.preventDefault()
 
-    const id = localStorage.getItem("LojaVirtualId")
 
     const {nome, preco, descricao, cores, unidades} = formData
 
@@ -49,7 +48,6 @@ const AddProduto = () => {
     data.append("unidades", unidades)
     data.append("modelo", "aaa")
     data.append("categorias[]", [selected])
-    data.append("user_id", id)
 
     if (selectedFile) {
         data.append("imagem", selectedFile)

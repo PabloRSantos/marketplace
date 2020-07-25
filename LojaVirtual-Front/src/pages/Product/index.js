@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react"
 import api from "../../services/api"
 import Header from "../../components/header"
-import "./style.css"
+import {Main, Imagem, InfoSide, Top, Spans, Buttons, SideProducts, Descricao} from "./style"
 import Comentarios from "../../components/Comentarios"
 import Products from "../../components/Products"
 import {useLocation} from "react-router-dom"
@@ -13,8 +13,7 @@ const Product = (props) => {
     
     useEffect(() => {
         api.get(`products/${props.match.params.id}?categoria=${location.state.categoria}`)
-        .then(response => setProduct(response.data)
-        )
+        .then(response => setProduct(response.data))
 
     }, [props.match.params.id])
 
@@ -28,37 +27,47 @@ const Product = (props) => {
     return (
         <>
         <Header />
-        <main id="mainProduct">
-            <div id="imagem">
+        <Main>
+            <Imagem>
                 <img src={`http://localhost:3333/uploads/products/${product.imagem}`} alt="imagem do produto"/>
-            </div>
-            <div id="infosSide">
+            </Imagem>
+            <InfoSide>
 
-                <div id="top">
-                <div id="spans">
+                <Top>
+                <Spans>
                      <p>{product.vendidos} Produtos vendidos</p>
                      <p>{product.unidades} Unidade(s) disponivel(s)</p>
-                </div>
+                </Spans>
                     <h1>R${product.preco}</h1>
                     <h2>{product.nome}</h2>
-                    <h3>{product.descricao}</h3>
-                </div>
+                </Top>
 
-                <div id="buttonsProduct">
+                <Buttons>
             <button onClick={addCarrinho}>Carrinho</button>
             <button>Comprar</button>
-        </div>
+        </Buttons>
 
-            </div>
+            </InfoSide>
 
-        <div id="productsSide">
+        <SideProducts>
             <Products 
             titulo={"Mais Produtos"}
             query={`categoria=${product.categoria_id}&limit=6`}/>
-        </div>
+        </SideProducts>
+
+        <Descricao>
+            <div id="ProductUser">
+                <img src={`http://localhost:3333/uploads/user/${product.foto}`}></img>
+                <h2>{product.nome}</h2>
+            </div>
+
+            <button>Chat</button>
+            <h1>Descrição:</h1>
+            <p>{product.descricao}</p>
+        </Descricao>
 
         <Comentarios id={props.match.params.id}/>
-        </main>
+        </Main>
         </>
     )
 }

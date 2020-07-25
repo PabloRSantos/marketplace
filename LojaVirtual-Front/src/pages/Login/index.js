@@ -19,7 +19,6 @@ const Login = () => {
         event.preventDefault()
 
         const error = await SignIn(formData)
-        console.log(error)
 
          if(error) {
             return alert(error)

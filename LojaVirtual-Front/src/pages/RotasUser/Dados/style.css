@@ -1,0 +1,78 @@
+#userDados {
+    background-color: white;
+    margin: 50px auto;
+    width: 600px;
+    max-width: 80%;
+    padding: 40px 20px;
+    border-radius: 5px;
+    color: rgb(86, 87, 88);
+    font-weight: 700;
+    font-size: 20px;
+}
+
+#userDados p + p {
+    margin-top: 60px;
+}
+
+#userDados #imagem {
+    border-radius: 50%;
+    margin: 0 auto;
+    width: 125px;
+    height: 125px;
+    margin-bottom: 42px;
+    position: relative;
+    overflow: hidden;
+}
+
+#userDados img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+
+    cursor: pointer;
+}
+
+
+#userDados #imagem #label{
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    color: white;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding-top: 40%;
+    cursor: pointer;
+    background-color: #307351;
+    opacity: .90;
+}
+
+.hidden {
+    visibility: visible;
+}
+
+#changeSenha {
+    width: 10%;
+    max-width: 10%;
+    border-radius: 5px;
+    background-color: #307351;
+    border: none;
+    color: white;
+    font-weight: 500;
+    padding: 5px 10px;
+    margin-left: 10px;
+    opacity: .7;
+    cursor: pointer;
+    transition: .5s;
+}
+
+#changeSenha:hover {
+    opacity: 1;
+}
+
+@media(max-width: 400px) {
+    #userDados {
+        font-size: 16px;
+    }
+}

@@ -15,9 +15,9 @@ function generateToken (params = {}){
 
 exports.cadastro = async (req, res) => {
 
-    const users = await knex("users").select("email").where("email", req.body.email)
+    const users = await knex("users").select("email").first().where("email", req.body.email)
 
-    if(users[0] != null) {
+    if(users != null) {
             return res.json({error: "Email já cadastrado"})
     }
 
@@ -28,17 +28,20 @@ exports.cadastro = async (req, res) => {
     const hash = await bcrypt.hash(req.body.senha, 10)
     req.body.senha = hash
 
-    let { nome, senha, email} = req.body
+    let { user, senha, email} = req.body
 
-    const user = knex("users").insert({nome, senha, email})
+    console.log(req.body)
+
+    const dados = knex("users").insert({user, senha, email})
     .then(() => {
         return res.json({
             sucess: "Cadastrado com sucesso", 
-            token: generateToken({id: user.id}),
-            id: user.id
+            token: generateToken({id: dados.id}),
+            id: dados.id
     })
-}).catch(() => {
-    return res.status(404).json({error: "Erro ao cadastrar, tente novamente"})
+}).catch((err) => {
+    console.log(err)
+    return res.json({error: "Erro ao cadastrar, tente novamente"})
 })
 
 }
@@ -78,9 +81,11 @@ exports.vendas = async(req, res) => {
 
 exports.perfil = async(req, res) => {
     
-    const user = await knex("users").limit(1).where("id", req.userId).select("*")
 
-    if(user[0] == null) {
+    const user = await knex("users").first().where("id", req.userId).select("*")
+
+
+    if(user === null) {
         return res.json({error: "Erro no token"})
     }
 

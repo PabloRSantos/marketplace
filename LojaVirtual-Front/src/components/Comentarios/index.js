@@ -6,7 +6,7 @@ import Sucess from "../Sucess"
 const Comentarios = (props) => {
     const [comentarios, setComentarios] = useState([])
     const [userAtual, setUserAtual] = useState("")
-    const token = localStorage.getItem("LojaVirtual")
+    const token = localStorage.getItem("LojaVirtualToken")
     const [formData, setFormData] = useState()
     const [classSucess, setClassSucess] = useState("hiddenSucess")
     const [message, setMessage] = useState(" ")
@@ -28,7 +28,8 @@ useEffect(() => {
     }
     api.get(`user/profile`)
     .then(response => {
-        const { foto } = response.data.user[0]
+        console.log(response.data)
+        const { foto } = response.data.user
         setUserAtual(foto)
     })
 }, [])
@@ -82,7 +83,7 @@ function submitComentario(event){
                           <img src={`http://localhost:3333/uploads/user/${comentario.foto}`} alt="Foto de perfil"/>
                       </div>
                       <div className="comentarioUser">
-                            <h3>{comentario.nome}</h3>
+                            <h3>{comentario.user}</h3>
                            <p>{comentario.conteudo}</p>
                       </div>
                   </div>

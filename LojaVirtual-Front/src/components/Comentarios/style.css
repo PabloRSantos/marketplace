@@ -86,7 +86,7 @@
 
 #contentComentarios .comentario {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
 }
 
 #contentComentarios .comentario + .comentario {

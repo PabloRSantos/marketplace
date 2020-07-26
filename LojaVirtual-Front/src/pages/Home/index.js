@@ -37,15 +37,12 @@ const Home = () => {
 
                 {search.length < 1 ? (
                     <>
-
+    
                         <Product 
                         titulo={"Mais baratos"}
                         query={`tipo=preco&ordenar=asc&limit=${limit}`}
                         />                        
 
-                        <Product 
-                        titulo={"Mais Recentes"}
-                        query={`tipo=id&ordenar=desc`}/>
 
                         <Product 
                         titulo="Mais vendidos"
@@ -68,3 +65,9 @@ const Home = () => {
 }
 
 export default Home
+
+/*
+   <Product 
+                        titulo={"Mais Recentes"}
+                        query={`tipo=id&ordenar=desc`}/>
+*/

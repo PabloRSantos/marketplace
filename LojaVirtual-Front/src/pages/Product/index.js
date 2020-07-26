@@ -75,7 +75,7 @@ const Product = (props) => {
             <Vendedor>
                 <div>
                     <img src={`http://localhost:3333/uploads/user/${product.foto}`}></img>
-                    <h2>{product.nome}</h2>
+                    <h2>{product.user}</h2>
                 </div>
 
                 <button onClick={createChat}>Chat</button>

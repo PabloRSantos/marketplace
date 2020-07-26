@@ -27,7 +27,7 @@ exports.show = async(req, res) => {
 
     const users = await knex("users")
     .whereIn("id", usersId)
-    .select("nome", "foto", "id")
+    .select("user", "foto", "id")
 
     for(let i = 0; i < users.length; i++){
         users[i].chat_id = dados[i].id

@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, {css} from "styled-components"
 
 export const Content = styled.div`
     
@@ -31,7 +31,7 @@ export const Chats = styled.ul`
     border-right: 2px solid #d3d3d2;
     min-height: 100%;
 
-    overflow-y: auto;
+    overflow-y: scroll;
 
 
        li {
@@ -69,11 +69,16 @@ export const ContentMessages = styled.div`
     #messages {
         width: 100%;
         height: 80%;
+        max-height: 80%;
         flex: 1;
+        display: flex;
+        flex-direction: column;
 
         margin-bottom: 25px;
         background-color: #F6F5F4;
         border-radius: 5px;
+
+        overflow-y: scroll;
         
     }
 
@@ -110,4 +115,23 @@ button:hover {
 
 
 
+`
+
+export const Message = styled.div`
+    background-color: #307351;
+    color: white;
+    max-width: 50%;
+    padding: 6px 8px;
+    margin: 5px;
+
+    border-radius: 12px;
+
+    ${props => props.user_id === true ?
+        css`    
+       align-self: flex-end;
+       border-bottom-right-radius: 0px; 
+    ` : css`
+        border-bottom-left-radius: 0px; 
+        align-self: flex-start;
+    `}
 `

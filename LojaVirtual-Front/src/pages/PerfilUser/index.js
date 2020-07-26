@@ -12,9 +12,8 @@ const Perfil = () => {
     useEffect(() => {
         api.get(`user/profile`)
         .then(response => {
-            console.log(response.data)
-            const { nome } = response.data.user[0]
-            setUser(nome)
+            const { user } = response.data.user
+            setUser(user)
         })
     })
 

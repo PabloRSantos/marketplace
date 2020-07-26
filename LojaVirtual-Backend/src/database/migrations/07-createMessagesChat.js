@@ -3,6 +3,7 @@ async function up(knex){
         table.increments("id").primary()
         table.string("text").notNullable()
         table.integer("chat_id").notNullable().references("id").inTable("chats")
+        table.integer("user_id").notNullable().references("id").inTable("users")
     })
 }
 

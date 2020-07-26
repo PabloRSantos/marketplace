@@ -21,28 +21,31 @@ app.use("/uploads/products", express.static(path.resolve(__dirname, "..", "uploa
 app.use("/uploads/user", express.static(path.resolve(__dirname, "..", "uploads", "user")))
 
 
-io.on("connection", async socket => {
+io.on("connection", socket => {
 
     console.log("conectou")
 
-    io.on("LogInRoom", async idRoom => {
+    socket.on("LogInRoom", async idRoom => {
+        
 
-        const messages = await knex("messages_chat").where("chat_id", idRoom).select("text", "id")
-
-        socket.join(idRoom);
+        const messages = await knex("messages_chat").where("chat_id", idRoom).select("text", "id", "user_id") || "Nenhuma mensagem encontrada" 
 
         socket.emit("previousMessages", messages)
 
+        socket.join(idRoom)
+
         socket.on("sendMessage", async data => {
-            const message = await knex("messages_chat").insert(data).returning("*")
+
+            data.chat_id = idRoom
+            await knex("messages_chat").insert(data)
     
-            socket.broadcast.to(idRoom).emit("receivedMessage", message) //envia para todos os sockets conectados
+            socket.to(idRoom).emit("receivedMessage", data)
         })
 
-        socket.on("createRoom", async newRoom => {
+        /*socket.on("createRoom", async newRoom => {
             await knex("chats").insert(newRoom).returning("id")
 
-        })
+        })*/
     })
 
    

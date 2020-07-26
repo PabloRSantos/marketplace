@@ -7,7 +7,7 @@ import {useAuth} from "../../contexts/auth"
 
 const Cadastro = () => {
     const [formData, setFormData] = useState({
-        nome: "",
+        user: "",
         email: "",
         senha: "",
     })
@@ -40,9 +40,9 @@ const Cadastro = () => {
             <div id="form">
                 <form onSubmit={handleSubmit}>
                     <div className="campo">
-                        <label htmlFor="nome">Nome:</label><br/>
+                        <label htmlFor="user">Nome:</label><br/>
                         <input onChange={handleChange} 
-                        onBlur={handleChange} required type="text" name="nome" id="nome"/>
+                        onBlur={handleChange} required type="text" name="user" id="nome"/>
                     </div>
 
                     <div className="campo">

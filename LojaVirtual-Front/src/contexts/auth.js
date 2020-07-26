@@ -44,9 +44,7 @@ export const AuthProvider = ({children}) => {
     async function SignIn(form){
 
         const {data} = await api.post("/login", form)
-        
-        console.log(data)
-        
+                
         if(data.error) {
             return data.error
         }

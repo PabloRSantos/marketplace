@@ -18,6 +18,7 @@ export const Main = styled.div`
         grid-template-areas: 
         "img"
         "infos"
+        "descricao"
         "comentarios"
         "side";
         grid-template-columns: 1fr;
@@ -54,7 +55,7 @@ grid-area: infos;
     border-bottom: 2px solid #d3d3d2;
 
     h1 {
-    font-size: 60px;
+    font-size: 55px;
     color: #28945c;
 }
 
@@ -101,10 +102,10 @@ export const Buttons = styled.div`
 
 grid-area: buttons;
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
     width: 100%;
     margin-top: 24px;
+    justify-content: space-between;
 
   button { 
     background-color: #28945c;
@@ -112,13 +113,12 @@ grid-area: buttons;
     border: none;
     outline: none;
     flex: 1;
-    height: 50px;
     padding: 10px 12px;
-    margin: 5px 10px;
     border-radius: 5px;
 
     font-weight: 500;
-    font-size: 24px;
+    font-size: 20px;
+    margin: 0 5px;
     
     cursor: pointer;
     transition: .3s;
@@ -200,18 +200,31 @@ export const SideProducts = styled.div`
 }
 `
 
-export const Descricao = styled.div`
- grid-area: descricao;
-    padding: 30px;
-    border-bottom: 2px solid #d3d3d2;
+export const Vendedor = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: rgb(86, 87, 88);
+    margin-top: 5px;
 
-     button {
+    div {
+        display: flex;
+        align-items: center;
+    }
+
+    img {
+        border-radius: 50%;
+        width: 75px;
+        height: 75px;
+        margin-right: 10px;
+    }
+
+    button {
         background-color: #28945c;
         color: white;
         border: none;
         outline: none;
-        flex: 1;
-        padding: 7px 12px;
+        padding: 7px 15px;
         border-radius: 5px;
     
         font-weight: 500;
@@ -226,7 +239,27 @@ export const Descricao = styled.div`
     }
 `
 
+export const ContentDescricao = styled.div`
+ grid-area: descricao;
+    padding: 30px;
+    border-bottom: 2px solid #d3d3d2;
+    color: rgb(86, 87, 88);
 
+    
+
+`
+
+
+export const Descricao = styled.div`
+    margin-top: 30px;
+
+
+    p {
+        margin-top: 5px;
+    }
+
+   
+`
 
 
 

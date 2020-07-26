@@ -23,6 +23,8 @@ app.use("/uploads/user", express.static(path.resolve(__dirname, "..", "uploads",
 
 io.on("connection", async socket => {
 
+    console.log("conectou")
+
     io.on("LogInRoom", async idRoom => {
 
         const messages = await knex("messages_chat").where("chat_id", idRoom).select("text", "id")
@@ -46,5 +48,5 @@ io.on("connection", async socket => {
    
 })
 
-app.listen(process.env.PORT || 3333, () => console.log("servidor rodando"))
+server.listen(process.env.PORT || 3333, () => console.log("servidor rodando"))
 

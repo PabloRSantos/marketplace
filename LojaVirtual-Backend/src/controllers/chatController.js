@@ -23,23 +23,32 @@ exports.show = async(req, res) => {
         return dado
     })
 
+    const usersId = dados.map(id => id.user)
+
     const users = await knex("users")
-    .join("chat_users", "chat_users.user_id", "=", "users.id")
+    .whereIn("id", usersId)
+    .select("nome", "foto", "id")
+
+    for(let i = 0; i < users.length; i++){
+        users[i].chat_id = dados[i].id
+    }
+
 
     return res.json(users)
 }
 
 exports.create = async (req, res) => {
 
-
+    if(req.userId === req.body.user2) return res.json({error: "Erro ao criar chat"})
 
     const trx = await knex.transaction() //se 1 insert n da certo, ele cancela o outro
 
     await trx("chats").insert({user1: req.userId, user2: req.body.user2})
 
-    await trx("chat_users").insert("user_id", req.userId)
+    await trx("chat_users").insert({user_id: req.userId})
 
-    await trx("chat_users").insert("user_id", req.body.user2)
+    await trx("chat_users").insert({user_id: req.body.user2})
+
 
     await trx.commit()
 

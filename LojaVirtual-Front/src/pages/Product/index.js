@@ -1,7 +1,16 @@
 import React, {useEffect, useState} from "react"
 import api from "../../services/api"
 import Header from "../../components/header"
-import {Main, Imagem, InfoSide, Top, Spans, Buttons, SideProducts, Descricao} from "./style"
+import {Main,
+     Imagem,
+     InfoSide,
+     Top,
+     Spans,
+     Vendedor,
+     Buttons,
+     SideProducts,
+     Descricao,
+    ContentDescricao} from "./style"
 import Comentarios from "../../components/Comentarios"
 import Products from "../../components/Products"
 import {useLocation} from "react-router-dom"
@@ -24,6 +33,12 @@ const Product = (props) => {
         .then(response => console.log(response.data))
     }
 
+    async function createChat(){
+       const {data} = await api.post("chat", {user2: product.user_id})
+
+       console.log(data)
+    }
+
     return (
         <>
         <Header />
@@ -35,8 +50,8 @@ const Product = (props) => {
 
                 <Top>
                 <Spans>
-                     <p>{product.vendidos} Produtos vendidos</p>
-                     <p>{product.unidades} Unidade(s) disponivel(s)</p>
+                     <p>{product.vendidos} Vendidos</p>
+                     <p>{product.unidades} disponivel(s)</p>
                 </Spans>
                     <h1>R${product.preco}</h1>
                     <h2>{product.nome}</h2>
@@ -55,16 +70,23 @@ const Product = (props) => {
             query={`categoria=${product.categoria_id}&limit=6`}/>
         </SideProducts>
 
-        <Descricao>
-            <div id="ProductUser">
-                <img src={`http://localhost:3333/uploads/user/${product.foto}`}></img>
-                <h2>{product.nome}</h2>
-            </div>
+        <ContentDescricao>
+            <h1>Vendedor:</h1>
+            <Vendedor>
+                <div>
+                    <img src={`http://localhost:3333/uploads/user/${product.foto}`}></img>
+                    <h2>{product.nome}</h2>
+                </div>
 
-            <button>Chat</button>
-            <h1>Descrição:</h1>
-            <p>{product.descricao}</p>
-        </Descricao>
+                <button onClick={createChat}>Chat</button>
+
+            </Vendedor>
+
+            <Descricao>
+                <h1>Produto:</h1>
+                <p>{product.descricao}</p>
+            </Descricao>
+        </ContentDescricao>
 
         <Comentarios id={props.match.params.id}/>
         </Main>

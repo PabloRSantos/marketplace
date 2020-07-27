@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom"
+
 
 export const Cabecalho = styled.header`
  
@@ -7,7 +9,7 @@ export const Cabecalho = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 50px;
+    padding: 7px 50px;
     overflow-x: hidden;
 
 ul {
@@ -15,20 +17,15 @@ ul {
     display: flex;
 }
 
-li {
-    margin: 0 15px;
-    font-weight: 700;
-    cursor: pointer;
-    font-size: 18px;
-}
 
 .hamburguer {
     display: none;
 }
 
-.linkHeader {
-    color: white;
-    text-decoration: none;
+
+
+img {
+    max-width: 100%;
 }
 
 @media(max-width: 500px){
@@ -63,11 +60,28 @@ li {
 }
 `;
 
+export const Items = styled(Link)`
+    margin: 0 15px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+`
+
+export const LinkHeader = styled(Link)`
+    color: white;
+    text-decoration: none;
+    max-width: 60px;
+    display: flex;
+    align-items: center;
+`
+
 export const Categorias = styled.section`
 
 background-color: #327a55;
     color: white;
-    padding: 12px 0;
+    padding: 12px 50px;
     font-size: 16px;
     display: flex;
     justify-content: center;
@@ -100,7 +114,7 @@ background-color: #327a55;
 }
 
 
-@media(max-width: 750px) {
+@media(max-width: 850px) {
     nav {
         display: flex;
         align-items: center;

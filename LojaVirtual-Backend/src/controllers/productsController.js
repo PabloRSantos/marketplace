@@ -100,8 +100,6 @@ const path = require("path")
             .offset(skip)
             .limit(limit)
 
-            console.log(products)
-
             let count = await knex("products").where("user_id", req.query.user).count("id" , {as: 'count'})
 
             const pages = count[0].count / 10
@@ -193,8 +191,6 @@ const path = require("path")
         .where("relacionamento.categoria_id", req.query.categoria)
         .where("products.id", id)
         .select("*")
-
-        console.log(product)
 
         return res.json(product)
     }

@@ -28,7 +28,6 @@ useEffect(() => {
     }
     api.get(`user/profile`)
     .then(response => {
-        console.log(response.data)
         const { foto } = response.data.user
         setUserAtual(foto)
     })

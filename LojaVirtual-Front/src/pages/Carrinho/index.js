@@ -7,30 +7,30 @@ import {Link} from "react-router-dom"
 const Carrinho = () => {
     const [products, setProducts] = useState([])
     const [totalProducts, setTotalProducts] = useState(0)
+    const [controller, setController] = useState(false)
 
 
     useEffect(() => {
+        
         api.get(`carrinho`)
         .then(async response => {
             setProducts(response.data)
             
-            let total = 0
+            let total = null
             await response.data.map(response => (
-                total+= response.preco
+                total+= parseFloat(response.preco)
             ))
            
            setTotalProducts(total)
         })
-    }, [products[0]])
+    }, [controller])
 
     function removeProduct (event){
         const product_id = event.target.id
 
         api.delete(`carrinho?product_id=${product_id}`)
-        .then(response => {
-            console.log(response.data)
-            setProducts([false])
-        })
+        .then(() => controller === true ? setController(false) : setController(true))
+        .catch(err => console.log(err))
     }
 
     return (

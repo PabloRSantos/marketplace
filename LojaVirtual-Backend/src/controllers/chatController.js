@@ -41,7 +41,7 @@ exports.create = async (req, res) => {
 
     if(req.userId === req.body.user2) return res.json({error: "Erro ao criar chat"})
 
-    const trx = await knex.transaction() //se 1 insert n da certo, ele cancela o outro
+    const trx = await knex.transaction()
 
     await trx("chats").insert({user1: req.userId, user2: req.body.user2})
 

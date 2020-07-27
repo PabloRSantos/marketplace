@@ -44,15 +44,21 @@ rota.get("/user/vendas", authMiddleware, usersController.vendas)
 rota.get("/user/profile", authMiddleware, usersController.perfil)
 
 
+
+
 rota.post("/comentario", authMiddleware, comentariosController.create)
 
 rota.get("/comentario", comentariosController.index)
+
+
 
 rota.get("/carrinho",  authMiddleware, carrinhoController.showProducts)
 
 rota.post("/carrinho", authMiddleware, carrinhoController.addCarrinho)
 
 rota.delete("/carrinho", authMiddleware, carrinhoController.removeCarrinho)
+
+
 
 
 rota.get("/chat", authMiddleware, chatController.show)

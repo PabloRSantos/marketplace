@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react"
-import {Cabecalho, Categorias} from "./style"
+import {Cabecalho, Categorias, Items, LinkHeader} from "./style"
 
 
-import { Link } from "react-router-dom"
 import api from "../../services/api"
 import {FaShoppingCart} from "react-icons/fa"
 import {FiMenu, FiChevronDown} from "react-icons/fi"
 import {useAuth} from "../../contexts/auth"
+import logo from "../../assets/logo.png"
 
 const Header = () => {
     const [categorias, setCategorias] = useState([])
@@ -36,26 +36,28 @@ const Header = () => {
     return (
         <main>
             <Cabecalho Display={menuResponsivo}>
-                <Link className="linkHeader" to="/"><h2>Logo</h2></Link>
+                <LinkHeader to="/">
+                    <img src={logo}/>
+                </LinkHeader>
                 
-                <FiMenu className="linkHeader hamburguer"
+                <FiMenu className="hamburguer"
                 onClick={responsiveMenu}
                 />
 
                     {!localStorage.getItem("LojaVirtualId") ? (
                         <ul>
-                            <Link className="linkHeader" to="/cadastro"><li>Crie sua conta</li></Link>
-                            <Link className="linkHeader" to="/login"><li>Login</li></Link>
+                            <Items to="/cadastro"><li>Crie sua conta</li></Items>
+                            <Items to="/login"><li>Login</li></Items>
                         </ul>
                     ) : (
                             <ul>
-                                <Link className="linkHeader" to="/user/perfil"><li>Meu Perfil</li></Link>
+                                <Items to="/user/perfil"><li>Meu Perfil</li></Items>
 
-                                <Link className="linkHeader" to="/user/chat"><li>Chat</li></Link>
+                                <Items to="/user/chat"><li>Chat</li></Items>
 
-                                <li className="linkHeader" onClick={Logout}>Sair</li>
+                                <Items onClick={Logout}>Sair</Items>
 
-                                <Link className="linkHeader" to="/carrinho"><li><FaShoppingCart/></li></Link>
+                                <Items to="/carrinho"><li><FaShoppingCart/></li></Items>
 
                             </ul>
                         )}
@@ -67,9 +69,9 @@ const Header = () => {
                 </nav>
                 <ul>
                     {categorias.map(categoria => (
-                        <Link key={categoria.id} className="linkHeader" to={`/categoria/${categoria.id}`}>
+                        <Items key={categoria.id} to={`/categoria/${categoria.id}`}>
                             <li>{categoria.nome}</li>
-                        </Link>
+                        </Items>
                     ))}
                 </ul>
 

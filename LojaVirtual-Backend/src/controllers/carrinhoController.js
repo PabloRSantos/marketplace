@@ -2,9 +2,16 @@ const knex = require("../database/connections")
 
 exports.addCarrinho = async (req, res) => {
 
-      req.body.user_id = req.userId
 
-      await knex("carrinho").insert(req.body)
+      const {product_id} = req.body
+
+
+      const carrinho = {
+        user_id: req.userId,
+        product_id
+      }
+
+      await knex("carrinho").insert(carrinho)
       
       return res.json({success: "Adicionado com sucesso!"})
   }

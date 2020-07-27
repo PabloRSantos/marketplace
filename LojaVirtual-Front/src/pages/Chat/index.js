@@ -18,7 +18,6 @@ const Chat = () => {
 
   socket.on("previousMessages", msg => {
     setMessages(msg)
-    console.log(msg)
   })
 
   socket.on("receivedMessage", msg => setMessages([...messages, msg]))

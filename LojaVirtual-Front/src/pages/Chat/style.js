@@ -3,15 +3,11 @@ import styled, {css} from "styled-components"
 export const Content = styled.div`
     
     display: flex;
-    min-height: 60vh;
 
     width: 80%;
-    min-height: 70vh;
-    margin: 0 auto;
+    height: 70vh;
+    margin: 50px auto;
 
-
-
-    margin-top: 50px;
     border-radius: 8px;
     background-color: white;
 
@@ -58,11 +54,13 @@ export const Chats = styled.ul`
         margin-right: 12px;
     }
 `
+
 export const ContentMessages = styled.div`
     flex: 1.5;
 
     display: flex;
     flex-direction:column;
+    justify-content: center;
 
     padding: 25px;
 

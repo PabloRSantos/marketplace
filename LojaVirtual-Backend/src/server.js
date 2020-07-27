@@ -23,8 +23,6 @@ app.use("/uploads/user", express.static(path.resolve(__dirname, "..", "uploads",
 
 io.on("connection", socket => {
 
-    console.log("conectou")
-
     socket.on("LogInRoom", async idRoom => {
         
 

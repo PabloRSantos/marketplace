@@ -30,8 +30,6 @@ exports.cadastro = async (req, res) => {
 
     let { user, senha, email} = req.body
 
-    console.log(req.body)
-
     const dados = knex("users").insert({user, senha, email})
     .then(() => {
         return res.json({

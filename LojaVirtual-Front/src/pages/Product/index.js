@@ -26,17 +26,15 @@ const Product = (props) => {
 
     }, [props.match.params.id])
 
-    function addCarrinho(){
-        const product_id = product.id
+    async function addCarrinho(){
+        const product_id = product.product_id
         
-        api.post("carrinho", {product_id})
-        .then(response => console.log(response.data))
+        await api.post("carrinho", {product_id})
     }
 
     async function createChat(){
-       const {data} = await api.post("chat", {user2: product.user_id})
+       await api.post("chat", {user2: product.user_id})
 
-       console.log(data)
     }
 
     return (

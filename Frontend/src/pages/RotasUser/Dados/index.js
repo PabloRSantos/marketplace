@@ -16,13 +16,15 @@ const [typeSucess, setTypeSucess] = useState("error")
 useEffect(() => {
         api.get(`user/profile`)
         .then(response => {
+
+            console.log(response.data.user)
             if(response.data.error){
                 setMessageSucess(response.data.error)
                 setClassSucess("showSucess")
                 return
             }
 
-            setDadosUser(response.data.user[0])
+            setDadosUser(response.data.user)
         })
         .catch(() => {
              setMessageSucess("Erro na conexão, tente novamente")
@@ -58,7 +60,7 @@ function changeFile(event){
                 onMouseOver={() => setClassProfile("show")}
                 onMouseOut={() => setClassProfile("hidden")}>
 
-                    <img src={`http://localhost:3333/uploads/user/${dadosUser.foto}`} alt="Foto de Perfil"/>
+                    <img src={`https://lojavirtual-backend.herokuapp.com/uploads/user/${dadosUser.foto}`} alt="Foto de Perfil"/>
                     
                     <div>
                     <label htmlFor="file" className={classProfile} id="label">Alterar</label>

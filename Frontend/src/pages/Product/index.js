@@ -42,7 +42,7 @@ const Product = (props) => {
         <Header />
         <Main>
             <Imagem>
-                <img src={`http://localhost:3333/uploads/products/${product.imagem}`} alt="imagem do produto"/>
+                <img src={`https://lojavirtual-backend.herokuapp.com/uploads/products/${product.imagem}`} alt="imagem do produto"/>
             </Imagem>
             <InfoSide>
 
@@ -72,7 +72,7 @@ const Product = (props) => {
             <h1>Vendedor:</h1>
             <Vendedor>
                 <div>
-                    <img src={`http://localhost:3333/uploads/user/${product.foto}`}></img>
+                    <img src={`https://lojavirtual-backend.herokuapp.com/uploads/user/${product.foto}`}></img>
                     <h2>{product.user}</h2>
                 </div>
 

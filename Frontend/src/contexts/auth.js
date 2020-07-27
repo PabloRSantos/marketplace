@@ -23,12 +23,12 @@ export const AuthProvider = ({children}) => {
 
     async function SignUp(form){
 
+        try { 
        const {data} = await api.post("/cadastro", form)
 
 
        if(data.error) {
             return data.error
-       }
 
             api.defaults.headers["Authorization"] = `Bearer ${data.token}`
 
@@ -37,12 +37,20 @@ export const AuthProvider = ({children}) => {
             localStorage.setItem("LojaVirtualToken", data.token)
             localStorage.setItem("LojaVirtualId", data.id)
 
+       }
+    } catch (e){
+        console.log(e)
+    }
+
+           
+
 
 
     }
 
     async function SignIn(form){
 
+        try {
         const {data} = await api.post("/login", form)
                 
         if(data.error) {
@@ -55,6 +63,10 @@ export const AuthProvider = ({children}) => {
 
         localStorage.setItem("LojaVirtualToken", data.token)
         localStorage.setItem("LojaVirtualId", data.id)
+        
+    } catch (e){
+        console.log(e)
+    }
 
        
      

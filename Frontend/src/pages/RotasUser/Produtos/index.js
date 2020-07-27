@@ -78,7 +78,7 @@ const UserProducts = () => {
                                 <Link className="link" to={{ pathname: `/product/${product.id}`, state: { categoria: product.categoria_id }}} >
 
                                     <div className="productPic">
-                                        <img src={`http://localhost:3333/uploads/products/${product.imagem}`} />
+                                        <img src={`https://lojavirtual-backend.herokuapp.com/uploads/products/${product.imagem}`} />
                                     </div>
 
                                     <div className="productInfo">

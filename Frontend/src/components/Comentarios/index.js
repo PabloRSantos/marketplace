@@ -79,7 +79,7 @@ function submitComentario(event){
                 comentarios.map(comentario => (
                       <div className="comentario">
                       <div className="imgUser">
-                          <img src={`http://localhost:3333/uploads/user/${comentario.foto}`} alt="Foto de perfil"/>
+                          <img src={`https://lojavirtual-backend.herokuapp.com/uploads/user/${comentario.foto}`} alt="Foto de perfil"/>
                       </div>
                       <div className="comentarioUser">
                             <h3>{comentario.user}</h3>
@@ -94,7 +94,7 @@ function submitComentario(event){
 
                 <div id="newComentario">
             <div className="imgUser">
-                    <img src={`http://localhost:3333/uploads/user/${userAtual}`} alt="Foto de perfil"/>
+                    <img src={`https://lojavirtual-backend.herokuapp.com/uploads/user/${userAtual}`} alt="Foto de perfil"/>
                 </div>
             <form>
                 <input type="text" onChange={changeComentario} name="conteudo" id="conteudo" placeholder="Faça um comentário"/>

@@ -43,7 +43,7 @@ const Carrinho = () => {
                  <p className="close" id={product.product_id} onClick={removeProduct}>X</p>
                  <Link className="link" to={`/product/${product.product_id}`}>
                     <div className="imagemProduct">
-                        <img src={`http://localhost:3333/uploads/products/${product.imagem}`} alt="imagem"/>
+                        <img src={`https://lojavirtual-backend.herokuapp.com/uploads/products/${product.imagem}`} alt="imagem"/>
                     </div>
 
                     <div className="infosProduct">

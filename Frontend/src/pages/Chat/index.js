@@ -5,7 +5,7 @@ import {Content, Chats, ContentMessages, Message} from "./style"
 import io from "socket.io-client"
 
 
-const socket = io("http://localhost:3333/")
+const socket = io("https://lojavirtual-backend.herokuapp.com/")
 socket.on("connection")
 
 const Chat = () => {
@@ -62,7 +62,7 @@ const Chat = () => {
                       key={chat.chat_id}
                       onClick={() => handleChat(chat.chat_id)} >
                       
-                        <img src={`http://localhost:3333/uploads/user/${chat.foto}`}></img>
+                        <img src={`https://lojavirtual-backend.herokuapp.com/uploads/user/${chat.foto}`}></img>
                       <h2>{chat.user}</h2>
                       </li>
                     ))}

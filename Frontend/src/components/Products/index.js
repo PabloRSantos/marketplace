@@ -59,7 +59,7 @@ const Products = (props) => {
                 <div id={prod.id} className="product">
                       <Link className="link" to={{pathname:`/product/${prod.id}`, state: {categoria:prod.categoria_id}}}>
                     <div className="imagem">
-                        <img src={`http://localhost:3333/uploads/products/${prod.imagem}`}/>
+                        <img src={`https://lojavirtual-backend.herokuapp.com/uploads/products/${prod.imagem}`}/>
                     </div>
                      <div className="preco">
                      <p>{`R$${prod.preco}`}</p> 
